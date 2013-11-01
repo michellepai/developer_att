@@ -48,10 +48,11 @@
                     $('.tab_nav li a.selected').removeClass('selected');
                     $(this).addClass('selected');
                 });
-
                 $("#toc li a").click(function() {
                     $('#toc li.highlighted').removeClass('highlighted');
                     $(this).parent('li').addClass('highlighted');
+//                    console.log($(this).parent().attr('id').slice(4));
+                    
                 });
             });
             $(window).scroll(function() {
@@ -250,7 +251,30 @@
                     </header>
 
                     <a href="#" id="navbtn-collapse" onclick="show_menu(this.id);" class="navbtn">Nav Menu</a>
-
+                    <script>
+                        $(function() {
+                            var sections = {},
+                                    _height = $(window).height(),
+                                    i = 0;
+                            // Grab positions of our sections 
+                            $('.level-1, .level-2').each(function() {
+                                sections[this.id] = ($(this).offset().top)+700;
+                            });
+                            $(document).scroll(function() {
+                                var $this = $(this),
+                                        pos = $this.scrollTop();
+                                for (i in sections) {
+                                    if (sections[i] > pos && sections[i] < pos + _height) {
+                                        $('li').removeClass('highlighted');
+                                        $('#nav_' + i).addClass('highlighted');
+                                    }
+                                }
+                                if(sections["introduction"] > pos && sections["introduction"] < pos + _height) {
+                                        $('#nav_introduction').addClass('highlighted');
+                                    }
+                            });
+                        });
+                                        </script>
                     <section id="api-docs-content">
                         <div class="inner">
                             <aside>
@@ -259,28 +283,28 @@
                                     <div id="toc">
                                         <ul class="level-1">
 
-                                            <li class="highlighted"><a href="#introduction">1. Introduction</a></li>
-                                            <li><a href="#authorization">2. OAuth</a></li>
-                                            <li>
+                                            <li class="highlighted" id="nav_introduction"><a href="#introduction">1. Introduction</a></li>
+                                            <li id="nav_authorization"><a href="#authorization">2. OAuth</a></li>
+                                            <li id="nav_resources">
                                                 <a href="#resources">3. Resources</a>
                                                 <ul class="level-2">
-                                                    <li>
+                                                    <li id="nav_resources-speech-to-text">
                                                         <a href="#resources-speech-to-text">Speech to Text</a>
                                                     </li>
-                                                    <li>
+                                                    <li id="nav_resources-text-to-speech">
                                                         <a href="#resources-text-to-speech">Text to Speech</a>
                                                     </li>
-                                                    <li>
+                                                    <li id="nav_resources-speech-to-text-custom">
                                                         <a href="#resources-speech-to-text-custom">Speech to Text Custom</a>
                                                     </li>
                                                 </ul>
-                                            </li>
+                                            </li id="nav_">
 
-                                            <li><a href="#quickstart">4. Quickstart</a></li>
-                                            <li><a href="#sample-apps">5. Sample Apps</a></li>
-                                            <li><a href="#tutorials">6. Video Tutorials</a></li>
-                                            <li><a href="#sdks-and-plugins">7. SDKs &amp; Plugins</a></li>
-                                            <li><a href="#faqs">8. FAQs</a></li>
+                                            <li id="nav_quickstart"><a href="#quickstart">4. Quickstart</a></li>
+                                            <li id="nav_sample-apps"><a href="#sample-apps">5. Sample Apps</a></li>
+                                            <li id="nav_tutorials"><a href="#tutorials">6. Video Tutorials</a></li>
+                                            <li id="nav_sdks-and-plugins"><a href="#sdks-and-plugins">7. SDKs &amp; Plugins</a></li>
+                                            <li id="nav_faqs"><a href="#faqs">8. FAQs</a></li>
                                             <li><a href="/api/errors?api=speech" target="_blank">9. Errors</a></li>
                                         </ul>
                                     </div>
@@ -296,6 +320,7 @@
                                 <div class="deprecated">
                                     This API has been deprecated. You can find the latest version <a href="/api/release-notes">here</a>
                                 </div>
+
 
                                 <section id="introduction" class="level-1">
                                     <header>1. Introduction</header>
@@ -465,6 +490,7 @@
                                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere purus quis metus adipiscing tincidunt non eget leo. Nam tristique, purus quis tincidunt viverra, dolor libero congue orci, at aliquam risus odio in sem.
                                                 </p>
                                                 <figure>
+
                                                     </section>
                                                     </section>
                                                     </section>
@@ -2074,7 +2100,7 @@ POST https://api.att.com/v3/speech/speechToText
 
                                                                         </div>
 
-                                                                       
+
                                                                         <!-- Hi res images CSS - We load hi res sprites last, so it doesn't block everything else.
                                                                         ================================================== -->
 
@@ -2107,16 +2133,12 @@ POST https://api.att.com/v3/speech/speechToText
                                                                             })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
                                                                             ga('create', 'UA-41325383-1', 'citrusbyte.com');
                                                                             ga('send', 'pageview');
-
-
                                                                             $(function() {
                                                                                 $.fn.scrollBottom = function() {
                                                                                     return $(document).height() - this.scrollTop() - this.height();
                                                                                 };
-
                                                                                 var $el = $('#toc');
                                                                                 var $window = $(window);
-
                                                                                 $window.bind("scroll resize", function() {
                                                                                     var gap = $window.height() - $el.height() - 10;
                                                                                     var visibleFoot = 1200 - $window.scrollBottom();
@@ -2127,7 +2149,7 @@ POST https://api.att.com/v3/speech/speechToText
                                                                                             top: (250 - scrollTop) + "px",
                                                                                             bottom: "auto"
                                                                                         });
-                                                                                        $el.css("margin-top",(scrollTop - 20) + "px");
+                                                                                        $el.css("margin-top", (scrollTop - 20) + "px");
                                                                                     } else if (visibleFoot > gap) {
                                                                                         $el.css({
                                                                                             top: "auto",
