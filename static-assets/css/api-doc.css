@@ -381,42 +381,6 @@ em {
   border: 1px solid #e4e4e4;
   border-bottom: 1px solid #ffffff;
 }
-.api-docs #document-area #api-docs-content .main table.tests {
-  margin-bottom: 20px;
-}
-.api-docs #document-area #api-docs-content .main table.tests tbody tr:first-child {
-  border-top: 1px solid #eaeaea;
-}
-.api-docs #document-area #api-docs-content .main table.tests td {
-  min-width: 140px;
-}
-.api-docs #document-area #api-docs-content .main table.tests td ul {
-  list-style: disc outside none;
-  padding-left: 20px;
-}
-.api-docs #document-area #api-docs-content .main table.tests td ul li {
-  color: #333333;
-}
-.api-docs #document-area #api-docs-content .main table.tests small {
-  color: #666666;
-  display: block;
-  font-size: 12px;
-  position: relative;
-  top: 10px;
-}
-.api-docs #document-area #api-docs-content .main table thead th {
-  color: #666666;
-  font-size: 1.15em;
-  font-weight: bold;
-  padding: 20px 30px 20px 0;
-  text-align: left;
-}
-.api-docs #document-area #api-docs-content .main table td {
-  padding: 20px 30px;
-}
-.api-docs #document-area #api-docs-content .main table td.identifier {
-  width: 25%;
-}
 .api-docs #document-area #api-docs-content .main .grid {
   padding: 3% 0;
 }
@@ -1352,4 +1316,79 @@ td {
   line-height: 1em;
   color: #45494d;
   line-height: normal;
+}
+.api-docs #errors .sample-apps-grid .hover {
+  background-color: #f1f1f1;
+}
+.api-docs #errors .sample-apps-grid .header .item,
+.api-docs #errors .sample-apps-grid .header .links {
+  color: #999999;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: left;
+}
+.api-docs #errors .errors-grid {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.api-docs #errors .errors-grid .grid-row {
+  border-bottom: 1px dashed #dddddd;
+  padding: 3% 1%;
+  font: inherit;
+}
+.api-docs #errors .errors-grid .item {
+  color: #0679b3;
+  font-weight: bold;
+  width: 30%;
+  float: left;
+}
+.api-docs #errors .errors-grid .item span {
+  color: #616162;
+  display: inline;
+  font-size: 0.84em;
+  font-weight: normal;
+}
+.api-docs #errors .errors-grid .links {
+  margin-left: 30%;
+}
+.api-docs #errors .errors-grid .links a {
+  font-size: 1em;
+  font-weight: bold;
+  margin-right: 3px;
+}
+.api-docs #errors .errors-grid {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  padding: 3% 0;
+}
+.api-docs #errors .errors-grid .grid-row {
+  border-bottom: 1px solid #dddddd;
+  padding: 2% 1%;
+  font: inherit;
+}
+.api-docs #errors .errors-grid .item {
+  color: #000000;
+  font-weight: bold;
+  width: 30%;
+  float: left;
+}
+.api-docs #errors .errors-grid .item span {
+  color: #616162;
+  display: inline;
+  font-size: 0.84em;
+  font-weight: normal;
+}
+.api-docs #errors .errors-grid .error-code {
+  color: #0679b3;
+  font-weight: bold;
+}
+.api-docs #errors .errors-grid .status-code {
+  color: #009add;
+}
+.api-docs #errors header.error-detail {
+  font-size: 30px;
+  color: #0679b3;
+  padding: 2% 1%;
 }

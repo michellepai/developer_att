@@ -150,62 +150,58 @@
 
                 <nav>
                     <div class="dropdown">
-                        <a href="/api/list" class="expands">
+                        <a href="/apis" class="expands">
                             <abbr>APIs</abbr>
                         </a>
-                        <div class="dropdown-menu apis">
+                        <div class="dropdown-menu apis" style="display: none;">
                             <ul>
                                 <li>
-                                    <a href="/api/speech">
-                                        <img class="api-icon" title="Speech API" alt="Speech API" src="static-assets/images/api-icons/speech-icon.png"
-                                             data-at2x="static-assets/image/shi-res/api-icons/speech-icon.png" width="20" />
+                                    <a href="/apis/speech">
+                                        <img class="api-icon" title="Speech API" alt="Speech API" src="/static-assets/images/api-icons/speech-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/speech-icon.png" width="20">
                                         Speech
                                     </a>
-                                    <a class="docs-link" href="/api/speech/docs">Docs</a>
+                                    <a class="docs-link" href="/apis/speech/docs">Docs</a>
                                 </li>
                                 <li>
-                                    <a href="/api/call-management">
-                                        <img class="api-icon" title="Call Management API" alt="Call Management API" src="static-assets/images/api-icons/call-management-icon.png"
-                                             data-at2x="static-assets/images/hi-res/api-icons/call-management-icon.png" width="20" />
+                                    <a href="/apis/call-management">
+                                        <img class="api-icon" title="Call Management API" alt="Call Management API" src="/static-assets/images/api-icons/call-management-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/call-management-icon.png" width="20">
                                         Call Management (Beta)
                                     </a>
-                                    <a class="docs-link" href="/api/call-management/docs">Docs</a>
+                                    <a class="docs-link" href="/apis/call-management/docs">Docs</a>
                                 </li>
                                 <li>
-                                    <a href="/api/sms-mms">
-                                        <img class="api-icon" title="SMS API" alt="SMS API" src="static-assets/images/api-icons/sms-icon.png"
-                                             data-at2x="static-assets/images/hi-res/api-icons/sms-icon.png" width="20" />
+                                    <a href="/apis/msm-mms">
+                                        <img class="api-icon" title="SMS API" alt="SMS API" src="/static-assets/images/api-icons/sms-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/sms-icon.png" width="20">
                                         SMS
                                     </a>
-                                    <a class="docs-link" href="/api/sms/docs">Docs</a>
+                                    <a class="docs-link" href="/apis/sms/docs">Docs</a>
                                 </li>
                                 <li>
-                                    <a href="/api/sms-mms">
-                                        <img class="api-icon" title="MMS API" alt="MMS API" src="static-assets/images/api-icons/mms-icon.png"
-                                             data-at2x="static-assets/images/hi-res/api-icons/mms-icon.png" width="20" />
+                                    <a href="/apis/msm-mms">
+                                        <img class="api-icon" title="MMS API" alt="MMS API" src="/static-assets/images/api-icons/mms-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/mms-icon.png" width="20">
                                         MMS
                                     </a>
-                                    <a class="docs-link" href="/api/mms/docs">Docs</a>
+                                    <a class="docs-link" href="/apis/msm-mms/docs">Docs</a>
                                 </li>
                                 <li>
-                                    <a href="/api/immn">
-                                        <img class="api-icon" title="IMMN API" alt="IMMN API" src="static-assets/images/api-icons/immn-icon.png"
-                                             data-at2x="static-assets/images/hi-res/api-icons/immn-icon.png" width="20" />
+                                    <a href="/apis/in-app-messaging">
+                                        <img class="api-icon" title="IMMN API" alt="IMMN API" src="/static-assets/images/api-icons/immn-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/immn-icon.png" width="20">
                                         In-App Messaging
                                     </a>
-                                    <a class="docs-link" href="/api/immn/docs">Docs</a>
+                                    <a class="docs-link" href="/apis/in-app-messaging/docs">Docs</a>
                                 </li>
                                 <li>
-                                    <a href="/api/list">
+                                    <a href="/apis">
                                         View all APIs
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </div>
+
                     <div class="dropdown">
                         <a href="/community" class="expands">Community</a>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu" style="display: none;">
                             <ul>
                                 <li>
                                     <a href="/community/events">
@@ -230,13 +226,14 @@
                         Stories
                     </a>
 
-                    <a href="/api/pricing">
+                    <a href="/pricing">
                         Pricing
                     </a>
 
                     <div class="dropdown">
                         <a href="/login" class="login">Login</a>
                     </div>
+
                     <a class="button" href="/signup">Get Started Free</a>
 
                 </nav>
@@ -301,227 +298,925 @@
                     </div>
 
                 </header>
-                <div id="error-code">
+
+                <section id="error-code" class="level-1">
                     <div class="container short">
                         <header>Results for <span id="type-filter">Service errors</span> in <span id="api-filter">All APIs</span></header>
                         <div class="sample-apps-grid">
-                            <div class="grid-row">
-                                <div class="item header">
+                            <div class="grid-row header">
+                                <div class="item">
                                     Error Code
                                 </div>
-                                <div class="links header">
+                                <div class="links">
                                     Error Message
                                 </div>
                             </div>
                             <div class="grid-row">
-                                <div class="item">
-                                    <a href="/api/errors/POL00001">POL00001</a>
-                                </div>
-                                <div class="links">
-                                    Policy Error.
-                                </div>
+                                <div class="item">SVC00000</div>
+                                <div class="links">System Unavailable.</div>
                             </div>
                             <div class="grid-row">
-                                <div class="item">
-                                    <a href="/api/errors/POL00002">POL00002</a>
-                                </div>
-                                <div class="links">
-                                    Privacy Verification Failed.
-                                </div>
+                                <div class="item">POL00001</div>
+                                <div class="links">Rate limit error occured: POL-006: TPA exceeded its maximum allowed rate of transactions</div>
                             </div>
                             <div class="grid-row">
-                                <div class="item">
-                                    <a href="/api/errors/SVC10000">SVC10000</a>
-                                </div>
-                                <div class="links">
-                                    System Unavailable.
-                                </div>
+                                <div class="item">POL00002</div>
+                                <div class="links">Privacy verification failed for address "address", request is refused.</div>
                             </div>
                             <div class="grid-row">
-                                <div class="item">
-                                    <a href="/api/errors/SVC10005">SVC10005</a>
-                                </div>
-                                <div class="links">
-                                    Delivery Status notification not supported.
-                                </div>
+                                <div class="item">POL00003</div>
+                                <div class="links">Too many addresses specified in message part.</div>
                             </div>
                             <div class="grid-row">
-                                <div class="item">
-                                    <a href="/api/errors/SVC40000">SVC40000</a>
-                                </div>
-                                <div class="links">
-                                    Message too long. Maximum length is %1 characters.
-                                </div>
+                                <div class="item">POL00004</div>
+                                <div class="links">Unlimited notification request not supported.</div>
                             </div>
                             <div class="grid-row">
-                                <div class="item">
-                                    <a href="/api/errors/SVC40001">SVC40001</a>
-                                </div>
-                                <div class="links">
-                                    The device cannot be recognized, &quot;Vendor&quot;.
-                                </div>
+                                <div class="item">POL00005</div>
+                                <div class="links">Too many notifications requested.</div>
                             </div>
                             <div class="grid-row">
-                                <div class="item">
-                                    <a href="/api/errors/SVC40002">SVC40002</a>
-                                </div>
-                                <div class="links">
-                                    The device cannot be recognized, &quot;Model&quot;.
-                                </div>
+                                <div class="item">POL00006</div>
+                                <div class="links">Group specified in message part "part name" not allowed.</div>
                             </div>
                             <div class="grid-row">
-                                <div class="item">
-                                    <a href="/api/errors/SVC40004">SVC40004</a>
-                                </div>
-                                <div class="links">
-                                    The device cannot be found, &quot;TypeAllocationCode&quot;.
-                                </div>
+                                <div class="item">POL00007</div>
+                                <div class="links">Nested group specified in message part %1 not allowed.</div>
                             </div>
                             <div class="grid-row">
-                                <div class="item">
-                                    <a href="/api/errors/SVC40004">SVC40004</a>
-                                </div>
-                                <div class="links">
-                                    The device cannot be found, &quot;TypeAllocationCode&quot;.
-                                </div>
+                                <div class="item">POL00008</div>
+                                <div class="links">Charging is not supported.</div>
                             </div>
                             <div class="grid-row">
-                                <div class="item">
-                                    <a href="/api/errors/SVC40005">SVC40005</a>
-                                </div>
-                                <div class="links">
-                                    The input value not valid for message part &quot;part name&quot;.
-                                </div>
+                                <div class="item">POL00009</div>
+                                <div class="links">Frequency requested is not valid.</div>
                             </div>
                             <div class="grid-row">
-                                <div class="item">
-                                    <a href="/api/errors/SVC40006">SVC40006</a>
-                                </div>
-                                <div class="links">
-                                    The input value is not valid for message part &quot;part name&quot;, valid values are &quot;part values&quot;.
-                                </div>
+                                <div class="item">POL00010</div>
+                                <div class="links">Requested information unavailable as the retention time interval has expired.</div>
                             </div>
+                            <div class="grid-row">
+                                <div class="item">POL00011</div>
+                                <div class="links">Media Type not supported.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL00012</div>
+                                <div class="links">Too many description entries specified in message part %1.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL00013</div>
+                                <div class="links">Duplicated addresses.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL01009</div>
+                                <div class="links">User has not been provisioned for %1.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL01010</div>
+                                <div class="links">User has been suspended from %1.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL01016</div>
+                                <div class="links">File size exceeds the limit %1.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL02000</div>
+                                <div class="links">The following policy error occurred: %1. Error code is %2.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC10005</div>
+                                <div class="links">Message too long. Maximum length is %1 characters.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC10018</div>
+                                <div class="links">Register the delivery status notification URI for your application in the short code management interface of your application account if you want to receive push notification of the delivery status.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC40000</div>
+                                <div class="links">User's device cannot be identified.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC40001</div>
+                                <div class="links">The device cannot be recognized, "Vendor" - message part.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC40002</div>
+                                <div class="links">The device cannot be recognized, "Model" - message part.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC40003</div>
+                                <div class="links">The device cannot be recognized, "Vendor &amp; Model" - message part.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC40004</div>
+                                <div class="links">The device cannot be found, "TypeAllocationCode" - message part.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC40005</div>
+                                <div class="links">The input value is not valid for message part "part name".</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC40006</div>
+                                <div class="links">The input value is not valid for message part "part name", valid values are "part values".</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC40007</div>
+                                <div class="links">No valid addresses provided in the message part "part name".</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL40011</div>
+                                <div class="links">Authorization cannot be granted at this time.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60000</div>
+                                <div class="links">The input value is not valid for message part "part name", valid values are "part values".</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60001</div>
+                                <div class="links">A service error has occurred.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60002</div>
+                                <div class="links">Input value for message part part name is not valid.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60100</div>
+                                <div class="links">Audio coding not specified.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60101</div>
+                                <div class="links">Idle Time out.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60102</div>
+                                <div class="links">HTTP Chunk length bad.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60103</div>
+                                <div class="links">App package not found.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60104</div>
+                                <div class="links">Bit-rate not supported.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60105</div>
+                                <div class="links">No Speech.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60106</div>
+                                <div class="links">Not Enough Speech.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60107</div>
+                                <div class="links">Too Much Speech.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60108</div>
+                                <div class="links">Too Quiet.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60109</div>
+                                <div class="links">Speech Too Soon</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60110</div>
+                                <div class="links">Parameter is not valid.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60111</div>
+                                <div class="links">Undefined parameter.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60112</div>
+                                <div class="links">Only pcm linear 16 supported.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60113</div>
+                                <div class="links">Sample Rate conflict.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60114</div>
+                                <div class="links">Too many channels.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60200</div>
+                                <div class="links">Text coding not specified.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60201</div>
+                                <div class="links">Idle Time out.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60202</div>
+                                <div class="links">App package not found.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60203</div>
+                                <div class="links">No Text</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60204</div>
+                                <div class="links">Too Much Text.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60205</div>
+                                <div class="links">Parameter is not valid.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60206</div>
+                                <div class="links">Undefined parameter.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC60207</div>
+                                <div class="links">Invalid audio format.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL70000</div>
+                                <div class="links">The request is missing a required parameter, includes an unsupported parameter or parameter value, repeats a parameter, includes multiple credentials, utilizes more than one mechanism for authenticating the client, or is otherwise malformed.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL70001</div>
+                                <div class="links">The client identifier provided is not valid, the client failed to authenticate, the client did not include the credentials, provided multiple client credentials, or used unsupported credentials type.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL70002</div>
+                                <div class="links">The authenticated client is not authorized to use the access grant type provided.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL70003</div>
+                                <div class="links">The provided access grant is not valid, expired, or revoked.  (For example, assertion is not valid, expired authorization token, bad end-user password credentials, or mis-matching authorization code and redirection URI).</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL70004</div>
+                                <div class="links">The requested scope is not valid, unknown, malformed, or exceeds the previously granted scope.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL70005</div>
+                                <div class="links">The access grant included - the type or another attribute ? is not supported by the authorization server.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL70006</div>
+                                <div class="links">The user cancelled the transaction.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC80000</div>
+                                <div class="links">System Unavailable.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC80001</div>
+                                <div class="links">System Unavailable.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80002</div>
+                                <div class="links">Request is not valid.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80003</div>
+                                <div class="links">Transaction Cancelled.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80004</div>
+                                <div class="links">Authentication Failed.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC80005</div>
+                                <div class="links">Communication Error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80006</div>
+                                <div class="links">Mandatory parameter {0} is not supplied.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80007</div>
+                                <div class="links">Parameter {0} has illegal value {1}.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80008</div>
+                                <div class="links">Wrong caller credentials.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80009</div>
+                                <div class="links">Wrong caller credentials.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80010</div>
+                                <div class="links">Implementation {0} was not found.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80011</div>
+                                <div class="links">Internal error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80012</div>
+                                <div class="links">Internal error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80013</div>
+                                <div class="links">Parameter {0} is too long, max length is {1}, given value {2}.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80014</div>
+                                <div class="links">Internal error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC80015</div>
+                                <div class="links">Fatal error {0}.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80016</div>
+                                <div class="links">Wrong caller credentials.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80017</div>
+                                <div class="links">Biller with ID {0} does not exist.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80018</div>
+                                <div class="links">{0} does not have attribute: {1}.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80019</div>
+                                <div class="links">Channel {0} was not defined.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80020</div>
+                                <div class="links">Internal error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80021</div>
+                                <div class="links">Tenant of merchant is {0}, but tenant of customer is {1} for session {2}.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80022</div>
+                                <div class="links">Customer not authenticated.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80023</div>
+                                <div class="links">Consumer already exists.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80024</div>
+                                <div class="links">Consumer credentials are wrong.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80025</div>
+                                <div class="links">Customer suspended.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80026</div>
+                                <div class="links">Customer login blocked.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80027</div>
+                                <div class="links">Wrong authorization token was provided for session {0}.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80028</div>
+                                <div class="links">Source of funds is suspended.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80029</div>
+                                <div class="links">Source of funds is retired.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80030</div>
+                                <div class="links">SOF registration failed.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80031</div>
+                                <div class="links">Not Valid {0} URL: {1}.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80032</div>
+                                <div class="links">Not Valid Session: {0}.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80033</div>
+                                <div class="links">Merchant ID not active.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80034</div>
+                                <div class="links">Internal error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80035</div>
+                                <div class="links">Merchant not exist.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80036</div>
+                                <div class="links">Internal error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80037</div>
+                                <div class="links">Not Valid Input {0}.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80038</div>
+                                <div class="links">Mandatory Field missing {0}</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80039</div>
+                                <div class="links">Source of funds is not valid.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80040</div>
+                                <div class="links">Biller suspended source of funds.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80041</div>
+                                <div class="links">Global Limit failed.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80042</div>
+                                <div class="links">Merchant Limit failed.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80043</div>
+                                <div class="links">Customer Limit failed.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80044</div>
+                                <div class="links">Source of funds Limit failed.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80045</div>
+                                <div class="links">Biller did not authorize the transaction.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80046</div>
+                                <div class="links">Biller could not capture the transaction.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80047</div>
+                                <div class="links">Biller could not rollback the transaction.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80048</div>
+                                <div class="links">Transaction does not exist.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80049</div>
+                                <div class="links">Too many transactions for the customer.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80050</div>
+                                <div class="links">Limit Rollback failed.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80051</div>
+                                <div class="links">Missing Input Parameter from external System.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80052</div>
+                                <div class="links">Output Parameter from external System is not valid.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80053</div>
+                                <div class="links">Limits could not be committed.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80054</div>
+                                <div class="links">Not enough time passed since last action.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC80055</div>
+                                <div class="links">Transaction is timed out.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80056</div>
+                                <div class="links">Transaction state is not valid for requested action.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80057</div>
+                                <div class="links">Could not generate valid external ID.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC80058</div>
+                                <div class="links">Do not save transaction error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80059</div>
+                                <div class="links">Merchant retired.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80060</div>
+                                <div class="links">Consumer retired.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80061</div>
+                                <div class="links">Could not create a billable event.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80062</div>
+                                <div class="links">Refund limits failed.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80063</div>
+                                <div class="links">The original transaction is not active anymore for actions.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80064</div>
+                                <div class="links">Biller did not cancel the authorization on the transaction.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC80065</div>
+                                <div class="links">Internal error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC80066</div>
+                                <div class="links">Internal error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80067</div>
+                                <div class="links">Session cannot be created, the reason is : {0}.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80068</div>
+                                <div class="links">Session {0} does not exist.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80069</div>
+                                <div class="links">Session {0} is obsolete.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80070</div>
+                                <div class="links">Session is expired.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80071</div>
+                                <div class="links">Internal error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80072</div>
+                                <div class="links">Cannot complete the request, consumer does not exist or retired.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80073</div>
+                                <div class="links">Cannot complete the request, merchant does not exist or retired.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80074</div>
+                                <div class="links">Cannot complete the request, consumer is not active.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80075</div>
+                                <div class="links">Cannot complete the request, merchant is not active.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80076</div>
+                                <div class="links">{0} request failed, transaction status: {1}.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80077</div>
+                                <div class="links">Cannot complete the request, the subscription period is too long.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80078</div>
+                                <div class="links">Subscription with ID: {0} is not found.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80079</div>
+                                <div class="links">Unsupported operation on external subscription.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80080</div>
+                                <div class="links">General subscription management error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80081</div>
+                                <div class="links">Internal error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80082</div>
+                                <div class="links">Internal error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80083</div>
+                                <div class="links">Problem with the biller identifiers.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80084</div>
+                                <div class="links">Internal error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80085</div>
+                                <div class="links">Internal error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC80086</div>
+                                <div class="links">Transaction failure.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80087</div>
+                                <div class="links">Consumer failure.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80088</div>
+                                <div class="links">Pocket retired.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80089</div>
+                                <div class="links">Pocket suspended.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80090</div>
+                                <div class="links">Consumer failure.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80091</div>
+                                <div class="links">Internal error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC80092</div>
+                                <div class="links">Internal error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC80093</div>
+                                <div class="links">Could not connect to external system.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC80094</div>
+                                <div class="links">External Time out.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC80095</div>
+                                <div class="links">Signature could not be encrypted.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC80096</div>
+                                <div class="links">Error received from external system.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC80097</div>
+                                <div class="links">Input from external system is not valid.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80098</div>
+                                <div class="links">The biller Account does allow the transaction.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80099</div>
+                                <div class="links">Biller Limits did not allow the transaction.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80100</div>
+                                <div class="links">the biller does not allow this product to be sold.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80101</div>
+                                <div class="links">Duplicate Subscription.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80102</div>
+                                <div class="links">The Biller Agreement does not allow the transaction.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80103</div>
+                                <div class="links">Transaction was already refunded.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC80104</div>
+                                <div class="links">Biller General error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80105</div>
+                                <div class="links">Wrong caller credentials.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80106</div>
+                                <div class="links">The merchant cannot run service {0} because of being in state {1}.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80107</div>
+                                <div class="links">Illegal operation: trying to upload empty file.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80108</div>
+                                <div class="links">Illegal operation: trying to upload file with size [{0}] bigger then [{1}] size.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80109</div>
+                                <div class="links">Merchant file with such file type [{0}] is not allowed.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80110</div>
+                                <div class="links">Merchant file with such identifier [{0}] already exist.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80111</div>
+                                <div class="links">Merchant file with such identifier [{0}] does not exist.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80112</div>
+                                <div class="links">Merchant status cannot be changed from {0} to {1}.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80113</div>
+                                <div class="links">Update merchant status cannot be run for input status {0}.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80114</div>
+                                <div class="links">The input value {0} of attribute {1} does not match the predefined values.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80115</div>
+                                <div class="links">The input content category {0} is not allowed to be added by merchant .</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80116</div>
+                                <div class="links">Merchant with given ID already exist.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80117</div>
+                                <div class="links">The input content category {0} is not allowed to be added by merchant.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC80118</div>
+                                <div class="links">Internal error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80119</div>
+                                <div class="links">Consumer is Retired.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80120</div>
+                                <div class="links">Not valid consumer status {0}.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80121</div>
+                                <div class="links">Update of {0} is not allowed.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80122</div>
+                                <div class="links">Source Of Funds is missing (id={0}).</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80123</div>
+                                <div class="links">Internal error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80124</div>
+                                <div class="links">General Error- [{0}].</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80125</div>
+                                <div class="links">DCM server received event that referred to transaction that was not found in HUB repository. The input vendorPurchaseIdentifier exception is [{0}].</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80126</div>
+                                <div class="links">No subscription was not found in HUB repository. For hubMerchantID [{0}], externalSubscriptionId [{1}], hubCustomerID [{2}], environment [{3}].</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80127</div>
+                                <div class="links">The input [{0}] field is not valid. Input date field value is [{1}].</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80128</div>
+                                <div class="links">The input [{0}] field is missing. Input date field value is [{1}].</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80129</div>
+                                <div class="links">The method [{0}] fails to process the event. Input fields: hubMerchantID [{1}] , externalSubscriptionId [{2}] , hubCustomerID [{3}] , environment [{4}], activityTimestamp [{5}] , tenantId [{6}].</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80130</div>
+                                <div class="links">The input [{0}] field is not valid or missing. Input field value is [{1}].</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80131</div>
+                                <div class="links">The DCM ownership Event is not valid, fails during unmarshal. Input value: [{0}].</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80132</div>
+                                <div class="links">The original transaction has already refunded, but the refund confirmation number in HUB does not equal to the one in the DCM report. Transaction ID[{0}], HUB refund confirmation Number[{1}], DCM refund confirmation Number(ACTIVITY_ID)[{2}].</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80133</div>
+                                <div class="links">The original transaction to be refunded was not found in HUB repository. DCM report includes refund activity referring to original transaction that was not found in HUB repository. DCM confirmation Number of the original transaction to be refunded (PARENT_FINANCIAL_EVENT_ID) [{0}].</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80134</div>
+                                <div class="links">The original transaction that has already refunded refers to refund transaction ID that was not found in HUB repository. Original Transaction ID [{0}], Refund Transaction ID (additionalTransactionID)[{1}].</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80135</div>
+                                <div class="links">DCM report includes refund activity on refund transaction that has been initiated by HUB and already carried out by HUB, but eventually has not been approved by DCM. Hub Refund Transaction ID [{0}].</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80136</div>
+                                <div class="links">error on try to do refund that initiated by DCM and received in the FTR report file. Hub Transaction ID to be Refunded [{0}].</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80137</div>
+                                <div class="links">Cannot map DCM refund reason code to HUB Refund Reason ID. DCM Refund Reason Code[{0}].</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80138</div>
+                                <div class="links">Cannot map HUB Refund Reason ID to DCM refund reason code. HUB Refund Reason ID[{0}].</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80139</div>
+                                <div class="links">Cannot map input parameters to DCM offer ID. Input parameters: price [{0}], currency [{1}], repeatitionTimeUnit [{2}], repeatitionPeriod [{3}], repeatitionsAmount [{4}], contentCategoryId [{5}], billerId [{6}] to DCM Offer ID.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80140</div>
+                                <div class="links">Consumer with ID {0} does not exist.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80141</div>
+                                <div class="links">Consumer already activated.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80142</div>
+                                <div class="links">Internal error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">POL80143</div>
+                                <div class="links">Biller limits problem.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC90001</div>
+                                <div class="links">A service error has occurred. Error code is %1.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC90002</div>
+                                <div class="links">The response error code is SVC0002 and the response has the name of the input parameter that resulted in the error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC90003</div>
+                                <div class="links">The response error code is SVC0003 and the response has the name of the input parameter that resulted in the error and also the value of the input parameter.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC90004</div>
+                                <div class="links">The response error code is SVC0004 and the response has the name of the input parameter that resulted in the error.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC90005</div>
+                                <div class="links">Correlator %1 specified in message part %2 is a duplicate.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC90006</div>
+                                <div class="links">Group %1 in message part %2 is not a valid group.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC90007</div>
+                                <div class="links">The charging information is not valid.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC90008</div>
+                                <div class="links">Overlapped Criteria %1.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC91000</div>
+                                <div class="links">No resources.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item">SVC92000</div>
+                                <div class="links">The following service error occurred: %1. Error code is %2.</div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="item"/>
+                                <div class="links"/>
+                            </div>
+
+
+
                         </div>
                     </div>
-                </div>
             </div>
-            <script src="/js/errors.js" type="text/javascript"></script>
+        </section>
+        <script src="/js/errors.js" type="text/javascript"></script>
 
-            <div id="att-footer" class="container">
-                <div class="footer-top">
-                    <div id="sitemap">
-                        <section class="apis">
-                            <header>APIs &amp; Tools</header>
-                            <ul>
-                                <li><a href="/api/list">Our APIs</a></li>
-                                <li><a href="/aro">AT&amp;T ARO for Android</a></li>
-                                <li><a href="/sdks-plugins-and-more">SDKs, Plugins, &amp; More</a></li>
-                            </ul>
-                        </section>
-
-                        <section class="resources">
-                            <header>Additional Resources</header>
-                            <ul>
-                                <li><a href="/technical-library">Technical Articles</a></li>
-                                <li><a href="/distribute-your-app">Distribute Your App</a></li>
-                                <li><a href="/device-references-and-specs">Device References and Specs</a></li>
-                            </ul>
-                        </section>
-
-                        <section class="support">
-                            <header>Support</header>
-                            <ul>
-                                <li><a href="/contact-us">Contact Us</a></li>
-                                <li><a href="#">Live Chat</a></li>
-                                <li><a href="#">Submit a Ticket</a></li>
-                                <li><a href="/support/faqs">FAQs</a></li>
-                                <li><a href="/support/bug-bounty">Bug Bounty</a></li>
-                            </ul>
-                        </section>
-                    </div>
-
-                    <section class="platform">
-                        <div class="status healthy">
-                            <div class="icon"></div>
-
-                            <p class="healthy">
-                                AT&amp;T Developer Network
-                                <strong>Platform is Healthy</strong>
-                            </p>
-
-                            <a href="#" class="button gray">See Details</a>
-                        </div>
-                    </section>
-
-                    <section class="social-media-links">
+        <div id="att-footer" class="container">
+            <div class="footer-top">
+                <div id="sitemap">
+                    <section class="apis">
+                        <header>APIs &amp; Tools</header>
                         <ul>
-                            <li class="facebook">
-                                <a href="#"><span class="icon"></span> Facebook</a>
-                            </li>
-
-                            <li class="twitter">
-                                <a href="#"><span class="icon"></span> Twitter</a>
-                            </li>
-
-                            <li class="github">
-                                <a href="#"><span class="icon"></span> GitHub</a>
-                            </li>
+                            <li><a href="/api/list">Our APIs</a></li>
+                            <li><a href="/aro">AT&amp;T ARO for Android</a></li>
+                            <li><a href="/sdks-plugins-and-more">SDKs, Plugins, &amp; More</a></li>
                         </ul>
                     </section>
-                </div>
 
-                <div class="footer-bottom">
-                    <a class="logo" href="http://www.att.com/" title="AT&amp;T">
-                        <img class="att-logo" alt="AT&T Developer" src="static-assets/images/logo-globe.png"
-                             data-at2x="static-assets/images/hi-res/logo-globe.png" width="30">
-                    </a>
-
-                    <div id="links">
-                        <nav>
-                            <a href="http://www.att.com/gen/general?pid=11561">Terms of Use</a>
-                            <a href="http://www.att.com/gen/privacy-policy?pid=2506">Privacy Policy</a>
-                            <a href="/contact" class="last">Contact Us</a>
-                        </nav>
-
-                        <p><a href="http://www.att.com/gen/privacy-policy?pid=2587">&copy;2013 AT&amp;T Intellectual Property.</a> All rights reserved.</p>
-                    </div>
-
-                    <div id="trademark-notes">
-                        <p>AT&amp;T, the AT&amp;T logo and all other AT&amp;T marks contained herein are trademarks of<br>AT&amp;T Intellectual Property and/or AT&amp;T affiliated companies. AT&amp;T 36USC220506</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="att-footer-responsive" class="container">
-                <div class="footer-top">
-
-                    <a class="button big blue remove-responsive">View Full Website</a>
-
-                    <div id="sitemap">
-                        <section>
-                            <header>Mobile Sitemap</header>
-                            <ul>
-                                <li><a href="/api/list">Our APIs</a></li>
-                                <li><a href="/aro">AT&amp;T ARO for Android</a></li>
-                                <li><a href="/api/pricing">Pricing</a></li>
-                                <li><a href="/stories">Stories</a></li>
-                            </ul>
-                        </section>
-                    </div>
-
-                    <section class="social-media-links">
+                    <section class="resources">
+                        <header>Additional Resources</header>
                         <ul>
-                            <li class="facebook">
-                                <a href="#"><span class="icon"></span> Facebook</a>
-                            </li>
+                            <li><a href="/technical-library">Technical Articles</a></li>
+                            <li><a href="/distribute-your-app">Distribute Your App</a></li>
+                            <li><a href="/device-references-and-specs">Device References and Specs</a></li>
+                        </ul>
+                    </section>
 
-                            <li class="twitter">
-                                <a href="#"><span class="icon"></span> Twitter</a>
-                            </li>
-
-                            <li class="github">
-                                <a href="#"><span class="icon"></span> GitHub</a>
-                            </li>
+                    <section class="support">
+                        <header>Support</header>
+                        <ul>
+                            <li><a href="/contact-us">Contact Us</a></li>
+                            <li><a href="#">Live Chat</a></li>
+                            <li><a href="#">Submit a Ticket</a></li>
+                            <li><a href="/support/faqs">FAQs</a></li>
+                            <li><a href="/support/bug-bounty">Bug Bounty</a></li>
                         </ul>
                     </section>
                 </div>
@@ -534,79 +1229,165 @@
                             AT&amp;T Developer Network
                             <strong>Platform is Healthy</strong>
                         </p>
+
+                        <a href="#" class="button gray">See Details</a>
                     </div>
                 </section>
 
-                <div class="footer-bottom">
+                <section class="social-media-links">
+                    <ul>
+                        <li class="facebook">
+                            <a href="#"><span class="icon"></span> Facebook</a>
+                        </li>
 
-                    <div id="links">
-                        <nav>
-                            <a href="http://www.att.com/gen/general?pid=11561">Terms of Use</a>
-                            <a href="http://www.att.com/gen/privacy-policy?pid=2506">Privacy Policy</a>
-                            <a href="/sitemap">Sitemap</a>
-                            <a href="/contact">Contact Us</a>
-                        </nav>
-                    </div>
+                        <li class="twitter">
+                            <a href="#"><span class="icon"></span> Twitter</a>
+                        </li>
 
-                    <a class="logo" href="http://www.att.com/" title="AT&amp;T">
-                        <img class="att-logo" alt="AT&T Developer" src="static-assets/images/logo-globe.png"
-                             data-at2x="static-assets/images/hi-res/logo-globe.png" width="60">
-                    </a>
-
-                    <div id="trademark-notes">
-                        <p><a href="http://www.att.com/gen/privacy-policy?pid=2587">&copy;2013 AT&amp;T Intellectual Property. All rights reserved.</a></p>
-                        <p>AT&amp;T, the AT&amp;T logo and all other AT&amp;T marks contained herein are trademarks of<br>AT&amp;T Intellectual Property and/or AT&amp;T affiliated companies. AT&amp;T 36USC220506</p>
-                    </div>
-                </div>
+                        <li class="github">
+                            <a href="#"><span class="icon"></span> GitHub</a>
+                        </li>
+                    </ul>
+                </section>
             </div>
 
+            <div class="footer-bottom">
+                <a class="logo" href="http://www.att.com/" title="AT&amp;T">
+                    <img class="att-logo" alt="AT&T Developer" src="static-assets/images/logo-globe.png"
+                         data-at2x="static-assets/images/hi-res/logo-globe.png" width="30">
+                </a>
 
+                <div id="links">
+                    <nav>
+                        <a href="http://www.att.com/gen/general?pid=11561">Terms of Use</a>
+                        <a href="http://www.att.com/gen/privacy-policy?pid=2506">Privacy Policy</a>
+                        <a href="/contact" class="last">Contact Us</a>
+                    </nav>
+
+                    <p><a href="http://www.att.com/gen/privacy-policy?pid=2587">&copy;2013 AT&amp;T Intellectual Property.</a> All rights reserved.</p>
+                </div>
+
+                <div id="trademark-notes">
+                    <p>AT&amp;T, the AT&amp;T logo and all other AT&amp;T marks contained herein are trademarks of<br>AT&amp;T Intellectual Property and/or AT&amp;T affiliated companies. AT&amp;T 36USC220506</p>
+                </div>
+            </div>
         </div>
 
-        <!-- More JS
-        ================================================== -->
-        <script src="static-assets/js/selfish.js"></script>
-        <script src="static-assets/js/app.js" type="text/javascript"></script>
-        <script src="static-assets/js/responsive.js" type="text/javascript"></script>
-        <script src="static-assets/js/slideshows.js" type="text/javascript"></script>
-        <script src="static-assets/js/carousel.js" type="text/javascript"></script>
-        <script src="static-assets/js/search.js" type="text/javascript"></script>
-        <script src="static-assets/js/fancy-select.js" type="text/javascript"></script>
-        <script src="static-assets/js/retina.js" type="text/javascript"></script>
+        <div id="att-footer-responsive" class="container">
+            <div class="footer-top">
 
-        <!-- Hi res images CSS - We load hi res sprites last, so it doesn't block everything else.
-        ================================================== -->
-        <link rel="stylesheet" href="/css/hi-res.css" />
+                <a class="button big blue remove-responsive">View Full Website</a>
 
-        <!-- Implement CrazyEgg
-        ================================================== -->
-        <script type="text/javascript">
-            setTimeout(function() {
-                var a = document.createElement("script");
-                var b = document.getElementsByTagName("script")[0];
-                a.src = document.location.protocol + "//dnn506yrbagrg.cloudfront.net/pages/scripts/0017/4039.js?" + Math.floor(new Date().getTime() / 3600000);
-                a.async = true;
-                a.type = "text/javascript";
-                b.parentNode.insertBefore(a, b)
-            }, 1);
-        </script>
+                <div id="sitemap">
+                    <section>
+                        <header>Mobile Sitemap</header>
+                        <ul>
+                            <li><a href="/api/list">Our APIs</a></li>
+                            <li><a href="/aro">AT&amp;T ARO for Android</a></li>
+                            <li><a href="/api/pricing">Pricing</a></li>
+                            <li><a href="/stories">Stories</a></li>
+                        </ul>
+                    </section>
+                </div>
 
-        <!-- Implement Google Analytics
-        ================================================== -->
-        <script>
-            (function(i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function() {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-                a = s.createElement(o),
-                        m = s.getElementsByTagName(o)[0];
-                a.async = 1;
-                a.src = g;
-                m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-            ga('create', 'UA-41325383-1', 'citrusbyte.com');
-            ga('send', 'pageview');
-        </script>
-    </body>
+                <section class="social-media-links">
+                    <ul>
+                        <li class="facebook">
+                            <a href="#"><span class="icon"></span> Facebook</a>
+                        </li>
+
+                        <li class="twitter">
+                            <a href="#"><span class="icon"></span> Twitter</a>
+                        </li>
+
+                        <li class="github">
+                            <a href="#"><span class="icon"></span> GitHub</a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <section class="platform">
+                <div class="status healthy">
+                    <div class="icon"></div>
+
+                    <p class="healthy">
+                        AT&amp;T Developer Network
+                        <strong>Platform is Healthy</strong>
+                    </p>
+                </div>
+            </section>
+
+            <div class="footer-bottom">
+
+                <div id="links">
+                    <nav>
+                        <a href="http://www.att.com/gen/general?pid=11561">Terms of Use</a>
+                        <a href="http://www.att.com/gen/privacy-policy?pid=2506">Privacy Policy</a>
+                        <a href="/sitemap">Sitemap</a>
+                        <a href="/contact">Contact Us</a>
+                    </nav>
+                </div>
+
+                <a class="logo" href="http://www.att.com/" title="AT&amp;T">
+                    <img class="att-logo" alt="AT&T Developer" src="static-assets/images/logo-globe.png"
+                         data-at2x="static-assets/images/hi-res/logo-globe.png" width="60">
+                </a>
+
+                <div id="trademark-notes">
+                    <p><a href="http://www.att.com/gen/privacy-policy?pid=2587">&copy;2013 AT&amp;T Intellectual Property. All rights reserved.</a></p>
+                    <p>AT&amp;T, the AT&amp;T logo and all other AT&amp;T marks contained herein are trademarks of<br>AT&amp;T Intellectual Property and/or AT&amp;T affiliated companies. AT&amp;T 36USC220506</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- More JS
+    ================================================== -->
+    <script src="static-assets/js/selfish.js"></script>
+    <script src="static-assets/js/app.js" type="text/javascript"></script>
+    <script src="static-assets/js/responsive.js" type="text/javascript"></script>
+    <script src="static-assets/js/slideshows.js" type="text/javascript"></script>
+    <script src="static-assets/js/carousel.js" type="text/javascript"></script>
+    <script src="static-assets/js/search.js" type="text/javascript"></script>
+    <script src="static-assets/js/fancy-select.js" type="text/javascript"></script>
+    <script src="static-assets/js/retina.js" type="text/javascript"></script>
+
+    <!-- Hi res images CSS - We load hi res sprites last, so it doesn't block everything else.
+    ================================================== -->
+    <link rel="stylesheet" href="/css/hi-res.css" />
+
+    <!-- Implement CrazyEgg
+    ================================================== -->
+    <script type="text/javascript">
+        setTimeout(function() {
+            var a = document.createElement("script");
+            var b = document.getElementsByTagName("script")[0];
+            a.src = document.location.protocol + "//dnn506yrbagrg.cloudfront.net/pages/scripts/0017/4039.js?" + Math.floor(new Date().getTime() / 3600000);
+            a.async = true;
+            a.type = "text/javascript";
+            b.parentNode.insertBefore(a, b)
+        }, 1);
+    </script>
+
+    <!-- Implement Google Analytics
+    ================================================== -->
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-41325383-1', 'citrusbyte.com');
+        ga('send', 'pageview');
+    </script>
+</body>
 </html>
