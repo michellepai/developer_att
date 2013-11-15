@@ -1,0 +1,58 @@
+<!-- TODO Need to modify api-doc-html-item.ftl to use a different variable -->
+<#assign prevContSectionItem = contentSectionItem />
+
+<#assign docHeaderName = "errors-sub-header" />
+<#assign filterName = "error-filter" />
+
+<#assign docHeaderContent = ""/>
+<#assign filterContent = "" />
+
+<#if contentSectionItem.contentCategoryItems.item??>
+    <#assign contentItems = contentSectionItem.contentCategoryItems.item />
+    <#list contentItems as contentSection>
+        <#assign contentItem = siteItemService.getSiteItem(contentSection.key) />
+        <#assign contentSectionTemplate = contentItem.contentTemplate.item />
+        <#assign internalName = contentItem["internal-name"]/>
+        <#if internalName?contains(docHeaderName)>
+            <#assign docHeaderContent = contentItem.contentItemHTML />
+        <#elseif internalName?contains(filterName)>
+             <#assign filterContent = contentItem.contentItemHTML />
+        </#if>
+    </#list>
+</#if>
+
+<div class="api-docs">
+    <div id="content-area">
+      	<div id="errors">
+            <!-- Documentation Header -->
+            ${docHeaderContent}
+            <!-- Filter Content -->
+            ${filterContent}
+            <div>
+                <section id="error-code">
+<!-- Content Sections -->
+                        <!-- TODO Need to modify api-doc-html-item.ftl to use a different variable -->
+                        <#assign contentSectionItem = prevContSectionItem />
+                        <@ice id="contentCategoryItems" />
+                        <#if contentSectionItem.contentCategoryItems.item??>
+                            <#assign contentItems = contentSectionItem.contentCategoryItems.item />
+                            <#list contentItems as contentSection>
+                                <#assign contentSectionItem = siteItemService.getSiteItem(contentSection.key) />
+                                <#assign contentSectionTemplate = contentSectionItem.contentTemplate.item />
+                                <#if !contentSectionItem["internal-name"]?contains(docHeaderName) &&
+                                        !contentSectionItem["internal-name"]?contains(filterName)>
+                                    <#if siteItemService.getSiteItem(contentSectionTemplate.key)??>
+                                        <#assign templateItem = siteItemService.getSiteItem(contentSectionTemplate.key) />
+                                        <#include templateItem.templatePath!'' />
+                                        <#else>
+                                            <#assign contentSectionItemName = contentSectionItem["internal-name"]/>
+                                            <div class="content-error">There is an issue with the component: ${contentSectionItemName}</div>
+                                    </#if>
+                                </#if>
+                            </#list>
+                        </#if>                            
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

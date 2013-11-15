@@ -912,9 +912,7 @@ td {
   margin-bottom: 10px;
   padding-left: 10px;
 }
-.api-docs .sample-apps-grid .live-demo,
 .api-docs .sample-apps-grid .view-on-github,
-.api-docs .sample-apps-grid .live-demo,
 .api-docs .sample-apps-grid .documentation {
   background-color: #738996;
   background-image: -moz-linear-gradient(center top, #788e9a, #6c828f);
@@ -1309,7 +1307,7 @@ td {
 .api-docs #errors #error-code {
   padding-top: 210px;
 }
-.api-docs #errors header {
+.api-docs #errors header.error-detail {
   font-family: omnes_attlight, 'helvetica neue', helvetica, sans-serif;
   font-size: 26px;
   letter-spacing: -1px;
@@ -1319,6 +1317,10 @@ td {
 }
 .api-docs #errors .sample-apps-grid .hover {
   background-color: #f1f1f1;
+  cursor: pointer;
+}
+.api-docs #errors .sample-apps-grid .grid-row {
+  padding: 15px;
 }
 .api-docs #errors .sample-apps-grid .header .item,
 .api-docs #errors .sample-apps-grid .header .links {

@@ -37,8 +37,10 @@
         <![endif]-->
         <script src="static-assets/js/jquery-1.js" type="text/javascript"></script>
         <script src="static-assets/js/jquery-ui-1.10.3.js" type="text/javascript"></script>
-        <script src="static-assets/js/ZeroClipboard.js" type="text/javascript"></script>
+        <script src="static-assets/js/jquery.zclip.min.js" type="text/javascript"></script>
         <script src="static-assets/js/script.js" type="text/javascript"></script>
+
+
 
 
     </head>
@@ -46,6 +48,11 @@
     <body class=api-docs>
 
         <div id="content-area">
+            <div class="notification">
+                <div class="notification-icon form-icon">Notification icon</div>
+                <span>Notification text</span>
+                <a class="close form-icon" title="Close Message">Close</a> 
+            </div>
 
 
             <!--//ATT header-->
@@ -67,95 +74,95 @@
                     </div>
                 </form>
 
-               <nav>
-		<div class="dropdown">
-			<a href="/apis" class="expands">
-				<abbr>APIs</abbr>
-			</a>
-			<div class="dropdown-menu apis" style="display: none;">
-				<ul>
-					<li>
-						<a href="/apis/speech">
-							<img class="api-icon" title="Speech API" alt="Speech API" src="/static-assets/images/api-icons/speech-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/speech-icon.png" width="20">
-							Speech
-						</a>
-						<a class="docs-link" href="/apis/speech/docs">Docs</a>
-					</li>
-					<li>
-						<a href="/apis/call-management">
-							<img class="api-icon" title="Call Management API" alt="Call Management API" src="/static-assets/images/api-icons/call-management-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/call-management-icon.png" width="20">
-							Call Management (Beta)
-						</a>
-						<a class="docs-link" href="/apis/call-management/docs">Docs</a>
-					</li>
-					<li>
-						<a href="/apis/msm-mms">
-							<img class="api-icon" title="SMS API" alt="SMS API" src="/static-assets/images/api-icons/sms-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/sms-icon.png" width="20">
-							SMS
-						</a>
-						<a class="docs-link" href="/apis/sms/docs">Docs</a>
-					</li>
-					<li>
-						<a href="/apis/msm-mms">
-							<img class="api-icon" title="MMS API" alt="MMS API" src="/static-assets/images/api-icons/mms-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/mms-icon.png" width="20">
-							MMS
-						</a>
-						<a class="docs-link" href="/apis/msm-mms/docs">Docs</a>
-					</li>
-					<li>
-						<a href="/apis/in-app-messaging">
-							<img class="api-icon" title="IMMN API" alt="IMMN API" src="/static-assets/images/api-icons/immn-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/immn-icon.png" width="20">
-							In-App Messaging
-						</a>
-						<a class="docs-link" href="/apis/in-app-messaging/docs">Docs</a>
-					</li>
-					<li>
-						<a href="/apis">
-							View all APIs
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	
-		<div class="dropdown">
-			<a href="/community" class="expands">Community</a>
-			<div class="dropdown-menu" style="display: none;">
-				<ul>
-					<li>
-						<a href="/community/events">
-							Hackathons &amp; Events
-						</a>
-					</li>
-					<li>
-						<a href="/community/forums">
-							Forums
-						</a>
-					</li>
-					<li>
-						<a href="/community/blog">
-							Blog
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
+                <nav>
+                    <div class="dropdown">
+                        <a href="/apis" class="expands">
+                            <abbr>APIs</abbr>
+                        </a>
+                        <div class="dropdown-menu apis" style="display: none;">
+                            <ul>
+                                <li>
+                                    <a href="/apis/speech">
+                                        <img class="api-icon" title="Speech API" alt="Speech API" src="/static-assets/images/api-icons/speech-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/speech-icon.png" width="20">
+                                        Speech
+                                    </a>
+                                    <a class="docs-link" href="/apis/speech/docs">Docs</a>
+                                </li>
+                                <li>
+                                    <a href="/apis/call-management">
+                                        <img class="api-icon" title="Call Management API" alt="Call Management API" src="/static-assets/images/api-icons/call-management-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/call-management-icon.png" width="20">
+                                        Call Management (Beta)
+                                    </a>
+                                    <a class="docs-link" href="/apis/call-management/docs">Docs</a>
+                                </li>
+                                <li>
+                                    <a href="/apis/msm-mms">
+                                        <img class="api-icon" title="SMS API" alt="SMS API" src="/static-assets/images/api-icons/sms-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/sms-icon.png" width="20">
+                                        SMS
+                                    </a>
+                                    <a class="docs-link" href="/apis/sms/docs">Docs</a>
+                                </li>
+                                <li>
+                                    <a href="/apis/msm-mms">
+                                        <img class="api-icon" title="MMS API" alt="MMS API" src="/static-assets/images/api-icons/mms-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/mms-icon.png" width="20">
+                                        MMS
+                                    </a>
+                                    <a class="docs-link" href="/apis/msm-mms/docs">Docs</a>
+                                </li>
+                                <li>
+                                    <a href="/apis/in-app-messaging">
+                                        <img class="api-icon" title="IMMN API" alt="IMMN API" src="/static-assets/images/api-icons/immn-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/immn-icon.png" width="20">
+                                        In-App Messaging
+                                    </a>
+                                    <a class="docs-link" href="/apis/in-app-messaging/docs">Docs</a>
+                                </li>
+                                <li>
+                                    <a href="/apis">
+                                        View all APIs
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
-        <a href="/stories">
-			Stories
-        </a>
+                    <div class="dropdown">
+                        <a href="/community" class="expands">Community</a>
+                        <div class="dropdown-menu" style="display: none;">
+                            <ul>
+                                <li>
+                                    <a href="/community/events">
+                                        Hackathons &amp; Events
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/community/forums">
+                                        Forums
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/community/blog">
+                                        Blog
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
-		<a href="/pricing">
-			Pricing
-                </a>
+                    <a href="/stories">
+                        Stories
+                    </a>
 
-                <div class="dropdown">
-                    <a href="/login" class="login">Login</a>
-                </div>
+                    <a href="/pricing">
+                        Pricing
+                    </a>
 
-                <a class="button" href="/signup">Get Started Free</a>
+                    <div class="dropdown">
+                        <a href="/login" class="login">Login</a>
+                    </div>
 
-               </nav>
+                    <a class="button" href="/signup">Get Started Free</a>
+
+                </nav>
             </div>
 
             <!--//2nd header-->
@@ -1735,8 +1742,6 @@ POST https://api.att.com/v3/speech/speechToText
 
     </section>
 </div>
-
-<script src="/js/docs.js" type="text/javascript"></script>
 
 <div id="att-footer" class="container">
     <div class="footer-top">
