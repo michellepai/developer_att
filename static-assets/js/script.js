@@ -33,31 +33,35 @@ $(function() {
         $(this).addClass('selected');
     });
     small_screen();
-    
+
     $(window).resize(function() {
         small_screen();
     });
-    
-//    if($('.status').length!==0){
-//        $('.status .button.blue').mouseover(function(){
-//           $('.status').css('font'); 
-//        });
-//    }
-    
+
     function small_screen() {
-        if ($(window).width() < 1200 && $(window).width() > 600) {
-            if($('.main').length!==0) $('.main').eq(1).width($(window).width() - 300);
-            if($('.status').length!==0) $('.status').width($(window).width() - 300);
-            $(window).scroll(function(){
-                $(window).scrollLeft(0);
-            });
-        }
-        if ($(window).width() < 600) {
-            if($('.main').length!==0) $('.main').eq(1).width($(window).width()-20);
-            if($('.status').length!==0) $('.status').width($(window).width()-20);
+        if ($(window).width() < 1200) {
+            if ($('.sub-header').length !== 0)
+                $('.sub-header').width($(window).width());
+            if ($(window).width() > 600) {
+                if ($('.main').length !== 0)
+                    $('.main').eq(1).width($(window).width() - 300);
+                if ($('.status').length !== 0)
+                    $('.status').width($(window).width() - 300);
+                $(window).scroll(function() {
+                    $(window).scrollLeft(0);
+                });
+            } else {
+                if ($('.main').length !== 0)
+                    $('.main').eq(1).width($(window).width() - 20);
+                if ($('.status').length !== 0)
+                    $('.status').width($(window).width() - 20);
+            }
+        }else{
+            if ($('.sub-header').length !== 0)
+                $('.sub-header').width(1200);
         }
     }
-    
+
     $('#toc a, .back-to-top a').click(function() {
         api_doc_header = $('#api-docs-header').length === 0 ? 0 : $('#api-docs-header').height();
         short = $('.sub-header').height() + $('#api-docs-header').height();

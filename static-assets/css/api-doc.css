@@ -1438,7 +1438,19 @@ td {
         //float: left;
         padding:3px!important;
     }
+    .sub-header .container h1 {
+        display: inline;
+        padding:auto 3px;
+        padding-right: 30px;
+        float:left;
+    }
+    .sub-header .container nav{
+        color: red;
+        display: inline;
+        float:left;
+    }
 }
+
 
 @media screen and (max-width: 600px) {
     #toc{
