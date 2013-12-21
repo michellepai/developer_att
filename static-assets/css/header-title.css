@@ -13,7 +13,7 @@
 }
 .sub-header h1 {
     color: #666666;
-    display: inline-block;
+    display: inline;
     font-family: omnes_att_regularregular,'helvetica neue',helvetica,sans-serif;
     font-size: 25px;
     height: 90px;

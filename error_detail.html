@@ -38,6 +38,7 @@
         <script src="static-assets/js/jquery-1.js" type="text/javascript"></script>
         <script src="static-assets/js/jquery-ui-1.10.3.js" type="text/javascript"></script>
         <script src="static-assets/js/script.js" type="text/javascript"></script>
+        
 
 
     </head>
@@ -177,11 +178,17 @@
                                 <label for="api-selector">Filter by API</label>
                                 <select id="api-selector" name="api"
                                         data-value="speech">
-                                    <option value="ALL">All APIs</option>
-                                    <option value="speech">Speech</option>
-                                    <option value="sms">SMS</option>
+                                    <option value="all">All APIs</option>
+                                    <option value="advertising">Advertising</option>
+                                    <option value="call-management">Call Management</option>
+                                    <option value="device-capabilities">Device Capabilities</option>
+                                    <option value="in-app-messaging">In-App Messaging</option>
                                     <option value="mms">MMS</option>
+                                    <option value="notary">Notary</option>
+                                    <option value="oauth-2">OAuth 2.0</option>
                                     <option value="payment">Payment</option>
+                                    <option value="sms">SMS</option>
+                                    <option value="speech">Speech</option>
                                 </select>
                             </div>
 
@@ -189,7 +196,7 @@
                                 <label for="type-selector">Error Type</label>
                                 <select id="type-selector" name="type"
                                         data-value="">
-                                    <option value="ALL">All Errors</option>
+                                    <option value="all">All Errors</option>
                                     <option value="SVC">Service Errors</option>
                                     <option value="POL">Policy Errors</option>
 
@@ -236,9 +243,20 @@
                                     <div class="item">Possible Solutions</div>
                                     <div class="links">Submit a trouble ticket describing the situation.</div>
                                 </div>
-                                <div class="grid-row">
+                                <div class="grid-row" style="display: table-row;">
                                     <div class="item">Affected APIs</div>
-                                    <div class="links"/>
+                                    <div class="links">
+                                        <a class="api icon-after" href="/api/mms/docs">MMS - Send MMS method</a>
+                                        <a class="api icon-after" href="/apis/sms/docs">SMS - Send SMS method</a>
+                                        <a class="api icon-after" href="/api/sms/docs">SMS - Get SMS Delivery Status method</a>
+                                        <a class="api icon-after" href="/api/sms/docs">SMS - Receive SMS callback</a>
+                                        <a class="api icon-after" href="/api/call-management/docs">Call Management (Beta) - Send Signal method</a>
+                                        <a class="api icon-after" href="/api/in-app-messaging/docs">In-App Messaging - Send Message method</a>
+                                        <a class="api icon-after" href="/api/in-app-messaging/docs">In-App Messaging - Get Message Headers method</a>
+                                        <a class="api icon-after" href="/api/in-app-messaging/docs">In-App Messaging - Get Message Contents method</a>
+                                        <a class="api icon-after" href="/api/speech/docs">Speech - Speech To Text Custom method</a>
+                                        <a class="api icon-after" href="/api/speech/docs">Speech - Text To Speech method</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -401,7 +419,7 @@
 
 
                 </div>
-                <script src="static-assets/js/fancy-select.js" type="text/javascript"></script>
+                <!--<script src="static-assets/js/fancy-select.js" type="text/javascript"></script>-->
 
 
                 <link rel="stylesheet" href="/css/hi-res.css" />

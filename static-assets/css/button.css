@@ -411,7 +411,7 @@
     box-shadow: 0 -3px 1px rgba(0, 0, 0, 0.1) inset;
     color: #FFFFFF;
     cursor: pointer;
-    display: inline-block;
+    /* display: inline-block; */
     font-size: 1em;
     line-height: normal;
     padding: 8px 20px;

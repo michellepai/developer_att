@@ -1,4 +1,3 @@
-
 em {
     font-style: italic;
 }
@@ -6,7 +5,7 @@ em {
     color: #333333;
     font-family: 'helvetica neue', helvetica, arial, sans-serif;
     display:table;
-    margin: 0 auto;
+    margin: 0 auto
 }
 span{
     color: #333333;
@@ -26,7 +25,7 @@ span{
     border-right: 1px solid #e2e2e2;
 }
 .api-docs .sub-header-container .sub-header {
-
+    
     height: 90px;
     z-index: 1000;
     margin-left: 0%;
@@ -42,7 +41,6 @@ span{
 }
 .api-docs #document-area {
     position: relative;
-    overflow-x: hidden;
 }
 .api-docs #document-area #api-docs-content aside #toc {
     font-family: 'helvetica neue', helvetica, arial, sans-serif;
@@ -56,16 +54,9 @@ span{
 #footer-common{
     z-index: 100000;
     /* background: red; */
-    //overflow: hidden;
-    display: block;
 }
 .api-docs #document-area #api-docs-content aside #toc li.highlighted > a {
     background: none repeat scroll 0 0 #dadada;
-    border-radius: 18px 18px 18px 18px;
-}
-
-.api-docs #document-area #api-docs-content aside #toc ul.level-2 li.highlighted > a {
-    background: none repeat scroll 0 0 #eeeeee;
     border-radius: 18px 18px 18px 18px;
 }
 .api-docs #document-area #api-docs-content aside #toc .level-1 li {
@@ -105,22 +96,11 @@ span{
     position: fixed;
     top: 162px;
 }
-
-.api-docs #document-area #api-docs-content left-box{
-    width: 20%;
-    background-color: red;
-    float: left;
-    position: inline;
-    height: 100px;
-
-}
 .api-docs #document-area #api-docs-content .main {
     border-left: 1px solid #ececec;
     box-shadow: 2px 0 5px #f4f4f4 inset;
     padding: 5px 0 0 20px;
     margin-left: 19.89%;
-
-    //overflow-wrap: break-word;
 }
 .api-docs #document-area #api-docs-content .main .deprecated {
     background: #e66a6d;
@@ -678,6 +658,7 @@ api-docs #document-area #api-docs-content .main .level-2 .level-3 p {
     padding: 17px;
 }
 .api-docs #api-docs-header .main .status {
+    background-color: #fefefe;
     font-size: 1.06em;
     font-weight: bold;
     line-height: 38px;
@@ -710,7 +691,8 @@ api-docs #document-area #api-docs-content .main .level-2 .level-3 p {
     color: #ffffff;
     float: right;
     font-size: 12px;
-
+    padding: 8px 16px!important;
+    
 }
 .api-docs #api-docs-header.fixed-scroll {
     position: fixed;
@@ -909,7 +891,7 @@ api-docs #document-area #api-docs-content .main .level-2 .level-3 p {
 }
 
 #api-docs-content{
-    width: 1200px;
+    width: 100%;
 }
 
 .api-docs #document-area:before,
@@ -928,14 +910,13 @@ api-docs #document-area #api-docs-content .main .level-2 .level-3 p {
     width: 18%;
 }
 .api-docs #api-docs-header .inner > aside {
-    padding-top: 28px;
+    padding-top: 30px;
 }
 .api-docs #api-docs-header .inner  > .main {
     width: 80%;
 }
 .api-docs #document-area #api-docs-content .inner  > .main {
     width: 80%;
-    /* right: 0; */
 }
 .api-docs #document-area #api-docs-content aside #toc .level-1 li,
 .api-docs #document-area #api-docs-content aside #toc .level-2 li,
@@ -1202,7 +1183,6 @@ td {
 #content-area {
     border-left: 0;
     border-right: 0;
-    //overflow-x: hidden;
 }
 /*error page*/
 .api-docs #errors .sub-banner {
@@ -1415,32 +1395,28 @@ td {
 }
 
 #att-footer {
-    border-top: 1px solid #ececec;
-    box-shadow: 2px 0 5px #f4f4f4 inset;
+border-top: 1px solid #ececec;
+    
+box-shadow: 2px 0 5px #f4f4f4 inset;
 
 }
 
-@media screen and (max-width: 1199px) {
-    .api-docs #api-docs-header .main .status{
-        margin: 0;
-        line-height: 1.1em;
-        text-align: left;
-        width:100%;
-        padding-top: 0;
+@media screen and (max-width: 801px) {
+    .api-docs {
+        overflow-x: hidden;
+    }
+
+    .api-docs #document-area #api-docs-content .inner > .main {
         position: relative;
-        font-weight: normal;
+        width: 40%;
     }
-    .api-docs #api-docs-header .inner .main .status .notification-icon{
-        display:none;
-    }
-    .api-docs #api-docs-header .main .status a.button{
-        width:80px;
-        //float: left;
-        padding:3px!important;
-    }
+
 }
 
 @media screen and (max-width: 600px) {
+    .api-docs #document-area #api-docs-content .inner > .main {
+        width: 50%;
+    }
     #toc{
         display:none;
     }
@@ -1449,18 +1425,28 @@ td {
         padding: 15px 0 0 5px;
     }
     .api-docs #api-docs-header .inner > aside {
-        margin: 3px 9px 0 3px;
+        margin: 3px 9px 3px 3px;
         padding: 0;
         border: 0;
         vertical-align: middle;
     }
     .api-docs #api-docs-header .inner > .main {
         margin: 3px 3px 0 9px;
-        padding-top: 0;
+        padding: 0;
         border: 0;
         box-shadow: none;
     }
-
+    .api-docs #api-docs-header .main .status{
+        margin: 0;
+        line-height: 1.2em;
+        text-align: left;
+        width:100%;
+        //position: relative;
+    }
+    .api-docs #api-docs-header .main .status a.button{
+        width:80px;
+        padding:3px!important;
+    }
     .api-docs #api-docs-header .inner .main .status .notification-icon{
         display: none;
     }
@@ -1482,6 +1468,6 @@ td {
         width:480px;
     }
     .api-docs #document-area #api-docs-content .inner > .main {
-        //width:40%
+        width:40%
     }
 }

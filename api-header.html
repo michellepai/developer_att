@@ -1,0 +1,202 @@
+<html>
+    <head>
+        <title>My site</title>
+
+        <!-- CSS file -->
+        <link type="text/css" rel="stylesheet" href="static-assets/css/jquery.qtip.css" />
+    </head>
+    <body>
+        <script src="static-assets/js/jquery-1.js" type="text/javascript"></script>
+        <script src="static-assets/js/jquery-ui-1.10.3.js" type="text/javascript"></script>
+        <script src="static-assets/js/jquery.qtip.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function()
+            {
+                alert();
+                // Apply tooltip to all <a/> elements with titles, which only hide when the
+                // target element is 'inactive' for 3 seconds (no mouse movement basically!)
+                $('.docs a').qtip({
+                    content: 'test'
+                });
+            });
+        </script>
+
+        <!--//payment-->
+
+        <div class="sub-header-container">
+            <div class="sub-header">
+                <div class="container">
+                    <a href="/api/payment">
+                        <h1>
+                            <img class="api-icon" title="Payment API" alt="Payment API" src="/static-assets/images/api-icons/payments-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/payments-icon.png" width="35">
+                            Payment API
+                        </h1>
+                    </a>
+                    <nav>
+                        <ul>
+                            <li class="tour">
+                                <a href="/api/payment" title="Take a tour of the Payment API">API Tour</a>
+                            </li>
+                            <li class="docs active">
+                                <a href="/api/payment/docs" title="Read the Payment API Documentation">Documentation</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+
+        <!--//mms-->
+        <div class="sub-header-container">
+            <div class="sub-header">
+                <div class="container">
+                    <a href="/api/sms-mms">
+                        <h1>
+                            <img class="api-icon" title="SMS / MMS API" alt="SMS / MMS API" src="/static-assets/images/api-icons/mms-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/mms-icon.png" width="35">
+                            MMS API
+                        </h1>
+                    </a>
+                    <nav>
+                        <ul>
+                            <li class="tour">
+                                <a href="/api/sms-mms" title="Take a tour of the SMS / MMS API">API Tour</a>
+                            </li>
+                            <li class="sms-docs">
+                                <a href="/api/sms/docs" title="Read the SMS API Documentation">SMS Documentation</a>
+                            </li>
+                            <li class="mms-docs active">
+                                <a href="/api/mms/docs" title="Read the MMS API Documentation">MMS Documentation</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!--//call management-->
+
+        <div class="sub-header-container">
+            <div class="sub-header">
+                <div class="container">
+                    <a href="/api/call-management">
+                        <h1>
+                            <img class="api-icon" title="Call Management API" alt="Call Management API" src="/static-assets/images/api-icons/call-management-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/call-management-icon.png" width="35">
+                            Call Management API
+                        </h1>
+                    </a>
+                    <nav>
+                        <ul>
+                            <li class="tour">
+                                <a href="/api/call-management" title="Take a tour of the Call Management API">API Tour</a>
+                            </li>
+                            <li class="docs active">
+                                <a href="/api/speech/docs" title="Read the Call Management API Documentation">Documentation</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!--//IMMN-->
+        <div class="sub-header-container">
+            <div class="sub-header">
+                <div class="container">
+                    <a href="/api/immn">
+                        <h1>
+                            <img class="api-icon" title="IMMN API" alt="IMMN API" src="/static-assets/images/api-icons/immn-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/immn-icon.png" width="35">
+                            In-App Messaging API
+                        </h1>
+                    </a>
+                    <nav>
+                        <ul>
+                            <li class="tour">
+                                <a href="/api/immn" title="Take a tour of the IMMN API">API Tour</a>
+                            </li>
+                            <li class="docs active">
+                                <a href="/api/immn/docs" title="Read the IMMN API Documentation">Documentation</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!--//device-->
+        <div class="sub-header-container">
+            <div class="sub-header ">
+                <div class="container">
+                    <a href="/api/device-capabilities">
+                        <h1>
+                            <img class="api-icon" title="Device Capabilities API" alt="Device Capabilities API" src="/static-assets/images/api-icons/devices-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/devices-icon.png" width="35">
+                            Device Capabilities
+                        </h1>
+                    </a>
+                    <nav>
+                        <ul>
+                            <li class="tour active">
+                                <a href="/api/device-capabilities" title="Take a tour of the Device Capabilities API">API Tour</a>
+                            </li>
+                            <li class="docs">
+                                <a href="/api/speech/docs" title="Read the Device Capabilities API Documentation">Documentation</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!--ads-->
+        <div class="sub-header-container">
+            <div class="sub-header ">
+                <div class="container">
+                    <a href="/api/advertising">
+                        <h1>
+                            <img class="api-icon" title="Advertising API" alt="Advertising API" src="/static-assets/images/api-icons/advertising-icon.png" data-at2x="/static-assets/images/hi-res/api-icons/advertising-icon.png" width="35">
+                            Advertising
+                        </h1>
+                    </a>
+                    <nav>
+                        <ul>
+                            <li class="tour active">
+                                <a href="/api/advertising" title="Take a tour of the Advertising API">API Tour</a>
+                            </li>
+                            <li class="docs">
+                                <a href="/api/speech/docs" title="Read the Advertising API Documentation">Documentation</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+
+        <!--location-->
+        <div class="sub-header-container">
+            <div class="sub-header ">
+                <div class="container">
+                    <a href="/api/advertising">
+                        <h1>
+                            Location API
+                        </h1>
+                    </a>
+                    <nav>
+                        <ul>
+                            <li class="tour active">
+                                <a href="/api/location" title="Take a tour of the Advertising API">API Tour</a>
+                            </li>
+                            <li class="docs">
+                                <a href="/api/location/docs" title="Read the Advertising API Documentation">Documentation</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </body>
+</html>

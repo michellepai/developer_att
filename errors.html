@@ -37,13 +37,10 @@
         <![endif]-->
         <script src="static-assets/js/jquery-1.js" type="text/javascript"></script>
         <script src="static-assets/js/jquery-ui-1.10.3.js" type="text/javascript"></script>
-        <script src="static-assets/js/ZeroClipboard.js" type="text/javascript"></script>
-        <script src="static-assets/js/script.js" type="text/javascript"></script>
-        <!--<script src="static-assets/js/app.js" type="text/javascript"></script>-->
-        <script src="static-assets/js/fancy-select.js" type="text/javascript"></script>
-        <script src="static-assets/js/errorcode_filter.js" type="text/javascript"></script>
-
-
+        <!--<script src="static-assets/js/ZeroClipboard.js" type="text/javascript"></script>-->
+<!--        <script src="static-assets/js/script.js" type="text/javascript"></script>-->
+        <script src="static-assets/js/errors.js" type="text/javascript"></script>
+        
     </head>
 
 
@@ -58,7 +55,7 @@
                     <img class="att-logo" title="AT&T Developer" alt="AT&T Developer" src="static-assets/images/logo-developer.png"
                          data-at2x="static-assets/images/hi-res/logo-developer.png" width="127" />
                 </a>
-                <form id="quick-search" class="hide-border" action="/search-results">
+                <div id="quick-search" class="hide-border" action="/search-results">
                     <button class="magnifying-glass form-icon" type="submit" value="Search" title="Click here to see search results"></button>
                     <input id="search" type="text" autocomplete="off" placeholder="Type here to search" />
                     <div id="suggested-result">
@@ -68,14 +65,14 @@
                             </li>
                         </ul>
                     </div>
-                </form>
+                </div>
 
                 <nav>
                     <div class="dropdown">
                         <a href="/apis" class="expands">
                             <abbr>APIs</abbr>
                         </a>
-                        <div class="dropdown-menu apis" style="display: none;">
+                        <div class="dropdown-menu apis">
                             <ul>
                                 <li>
                                     <a href="/apis/speech">
@@ -123,7 +120,7 @@
 
                     <div class="dropdown">
                         <a href="/community" class="expands">Community</a>
-                        <div class="dropdown-menu" style="display: none;">
+                        <div class="dropdown-menu">
                             <ul>
                                 <li>
                                     <a href="/community/events">
@@ -181,11 +178,17 @@
                                 <label for="api-selector">Filter by API</label>
                                 <select id="api-selector" name="api"
                                         data-value="speech">
-                                    <option value="ALL">All APIs</option>
-                                    <option value="speech">Speech</option>
-                                    <option value="sms">SMS</option>
+                                    <option value="all">All APIs</option>
+                                    <option value="advertising">Advertising</option>
+                                    <option value="call-management">Call Management</option>
+                                    <option value="device-capabilities">Device Capabilities</option>
+                                    <option value="in-app-messaging">In-App Messaging</option>
                                     <option value="mms">MMS</option>
+                                    <option value="notary">Notary</option>
+                                    <option value="oauth-2">OAuth 2.0</option>
                                     <option value="payment">Payment</option>
+                                    <option value="sms">SMS</option>
+                                    <option value="speech">Speech</option>
                                 </select>
                             </div>
 
@@ -193,7 +196,7 @@
                                 <label for="type-selector">Error Type</label>
                                 <select id="type-selector" name="type"
                                         data-value="">
-                                    <option value="ALL">All Errors</option>
+                                    <option value="all">All Errors</option>
                                     <option value="SVC">Service Errors</option>
                                     <option value="POL">Policy Errors</option>
 
@@ -208,895 +211,1155 @@
                     </div>
 
                 </header>
-
                 <div id="errors" class="landing-page page">
                     <section id="error-code" class="level-1">
                         <div class="container short">
-                            <header>Results for <span id="type-filter">Service errors</span> in <span id="api-filter">All APIs</span></header>
                             <div class="errors-grid">
-                                <div class="grid-row">
-                                    <div class="item">
-                                        Error Code
-                                    </div>
-                                    <div class="links">
-                                        Error Message
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sample-apps-grid">
-                                <div class="grid-row">
-                                    <div class="item">SVC00000</div>
-                                    <div class="links">System Unavailable.</div>
-                                </div>
-                                <div class="grid-row mms sms cms immn speech">
-                                    <div class="item">POL00001</div>
-                                    <div class="links">Rate limit error occured: POL-006: TPA exceeded its maximum allowed rate of transactions</div>
-                                </div>
-                                <div class="grid-row mms sms immn">
-                                    <div class="item">POL00002</div>
-                                    <div class="links">Privacy verification failed for address "address", request is refused.</div>
-                                </div>
-                                <div class="grid-row mms sms immn">
-                                    <div class="item">POL00003</div>
-                                    <div class="links">Too many addresses specified in message part.</div>
-                                </div>
-                                <div class="grid-row mms immn sms">
-                                    <div class="item">POL00004</div>
-                                    <div class="links">Unlimited notification request not supported.</div>
+                                <div class="grid-row header">
+                                    <div class="status-code">HTTP Status Code</div>
+                                    <div class="error-code">Error Code</div>
+                                    <div class="message">Error Message</div>
                                 </div>
                                 <div class="grid-row">
-                                    <div class="item">POL00005</div>
-                                    <div class="links">Too many notifications requested.</div>
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">SVC00000</div>
+                                    <div class="message"><strong>AOC-0000</strong>: System Unavailable.</div>
                                 </div>
-                                <div class="grid-row mms sms immn">
-                                    <div class="item">POL00006</div>
-                                    <div class="links">Group specified in message part "part name" not allowed.</div>
+                                <div class="grid-row mms sms call-management in-app-messaging speech device-capabilities advertising">
+                                    <div class="status-code">403 Forbidden</div>
+                                    <div class="error-code">POL00001</div>
+                                    <div class="message">Rate limit error occured: POL-006: TPA exceeded its maximum allowed rate of transactions</div>
                                 </div>
-                                <div class="grid-row mms sms immn">
-                                    <div class="item">POL00007</div>
-                                    <div class="links">Nested group specified in message part %1 not allowed.</div>
+                                <div class="grid-row mms sms in-app-messaging">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">POL00002</div>
+                                    <div class="message">Privacy verification failed for address "address", request is refused.</div>
                                 </div>
-                                <div class="grid-row">
-                                    <div class="item">POL00008</div>
-                                    <div class="links">Charging is not supported.</div>
+                                <div class="grid-row mms sms in-app-messaging device-capabilities">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">POL00003</div>
+                                    <div class="message">Too many addresses specified in message part.</div>
                                 </div>
-                                <div class="grid-row">
-                                    <div class="item">POL00009</div>
-                                    <div class="links">Frequency requested is not valid.</div>
-                                </div>
-                                <div class="grid-row mms sms immn">
-                                    <div class="item">POL00010</div>
-                                    <div class="links">Requested information unavailable as the retention time interval has expired.</div>
-                                </div>
-                                <div class="grid-row">
-                                    <div class="item">POL00011</div>
-                                    <div class="links">Media Type not supported.</div>
+                                <div class="grid-row mms in-app-messaging sms">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">POL00004</div>
+                                    <div class="message">Unlimited notification request not supported.</div>
                                 </div>
                                 <div class="grid-row">
-                                    <div class="item">POL00012</div>
-                                    <div class="links">Too many description entries specified in message part %1.</div>
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">POL00005</div>
+                                    <div class="message">Too many notifications requested.</div>
                                 </div>
-                                <div class="grid-row mms sms immn">
-                                    <div class="item">POL00013</div>
-                                    <div class="links">Duplicated addresses.</div>
+                                <div class="grid-row mms sms in-app-messaging">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">POL00006</div>
+                                    <div class="message">Group specified in message part "part name" not allowed.</div>
                                 </div>
-                                <div class="grid-row">
-                                    <div class="item">POL01009</div>
-                                    <div class="links">User has not been provisioned for %1.</div>
-                                </div>
-                                <div class="grid-row">
-                                    <div class="item">POL01010</div>
-                                    <div class="links">User has been suspended from %1.</div>
-                                </div>
-                                <div class="grid-row">
-                                    <div class="item">POL01016</div>
-                                    <div class="links">File size exceeds the limit %1.</div>
+                                <div class="grid-row mms sms in-app-messaging">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">POL00007</div>
+                                    <div class="message">Nested group specified in message part %1 not allowed.</div>
                                 </div>
                                 <div class="grid-row">
-                                    <div class="item">POL02000</div>
-                                    <div class="links">The following policy error occurred: %1. Error code is %2.</div>
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">POL00008</div>
+                                    <div class="message">Charging is not supported.</div>
+                                </div>
+                                <div class="grid-row">
+                                    <div class="status-code">403 Forbidden</div>
+                                    <div class="error-code">POL00009</div>
+                                    <div class="message">Frequency requested is not valid.</div>
+                                </div>
+                                <div class="grid-row mms sms in-app-messaging">
+                                    <div class="status-code">403 Forbidden</div>
+                                    <div class="error-code">POL00010</div>
+                                    <div class="message">Requested information unavailable as the retention time interval has expired.</div>
+                                </div>
+                                <div class="grid-row">
+                                    <div class="status-code">403 Forbidden</div>
+                                    <div class="error-code">POL00011</div>
+                                    <div class="message">Media Type not supported.</div>
+                                </div>
+                                <div class="grid-row">
+                                    <div class="status-code">403 Forbidden</div>
+                                    <div class="error-code">POL00012</div>
+                                    <div class="message">Too many description entries specified in message part %1.</div>
+                                </div>
+                                <div class="grid-row mms sms in-app-messaging">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">POL00013</div>
+                                    <div class="message">Duplicated addresses.</div>
+                                </div>
+                                <div class="grid-row">
+                                    <div class="status-code">403 Forbidden</div>
+                                    <div class="error-code">POL01009</div>
+                                    <div class="message">User has not been provisioned for %1.</div>
+                                </div>
+                                <div class="grid-row">
+                                    <div class="status-code">403 Forbidden</div>
+                                    <div class="error-code">POL01010</div>
+                                    <div class="message">User has been suspended from %1.</div>
+                                </div>
+                                <div class="grid-row">
+                                    <div class="status-code">403 Forbidden</div>
+                                    <div class="error-code">POL01016</div>
+                                    <div class="message">File size exceeds the limit %1.</div>
+                                </div>
+                                <div class="grid-row">
+                                    <div class="status-code">403 Forbidden</div>
+                                    <div class="error-code">POL02000</div>
+                                    <div class="message">The following policy error occurred: %1. Error code is %2.</div>
                                 </div>
                                 <div class="grid-row sms">
-                                    <div class="item">SVC10005</div>
-                                    <div class="links">Message too long. Maximum length is %1 characters.</div>
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC10005</div>
+                                    <div class="message">Message too long. Maximum length is %1 characters.</div>
                                 </div>
-                                <div class="grid-row sms mms immn">
-                                    <div class="item">SVC10018</div>
-                                    <div class="links">Register the delivery status notification URI for your application in the short code management interface of your application account if you want to receive push notification of the delivery status.</div>
+                                <div class="grid-row sms mms in-app-messaging">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC10018</div>
+                                    <div class="message">Register the delivery status notification URI for your application in the short code management interface of your application account if you want to receive push notification of the delivery status.</div>
+                                </div>
+                                <div class="grid-row device-capabilities">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC40000</div>
+                                    <div class="message">User's device cannot be identified.</div>
+                                </div>
+                                <div class="grid-row device-capabilities">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC40001</div>
+                                    <div class="message">The device cannot be recognized, "Vendor" - message part.</div>
+                                </div>
+                                <div class="grid-row device-capabilities">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC40002</div>
+                                    <div class="message">The device cannot be recognized, "Model" - message part.</div>
+                                </div>
+                                <div class="grid-row device-capabilities">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC40003</div>
+                                    <div class="message">The device cannot be recognized, "Vendor &amp; Model" - message part.</div>
+                                </div>
+                                <div class="grid-row device-capabilities">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC40004</div>
+                                    <div class="message">The device cannot be found, "TypeAllocationCode" - message part.</div>
+                                </div>
+                                <div class="grid-row device-capabilities">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC40005</div>
+                                    <div class="message">The input value is not valid for message part "part name".</div>
+                                </div>
+                                <div class="grid-row device-capabilities">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC40006</div>
+                                    <div class="message">The input value is not valid for message part "part name", valid values are "part values".</div>
+                                </div>
+                                <div class="grid-row device-capabilities">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC40007</div>
+                                    <div class="message">No valid addresses provided in the message part "part name".</div>
+                                </div>
+                                <div class="grid-row device-capabilities">
+                                    <div class="status-code">302 Found</div>
+                                    <div class="error-code">POL40011</div>
+                                    <div class="message">Authorization cannot be granted at this time.</div>
+                                </div>
+                                <div class="grid-row advertising">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60000</div>
+                                    <div class="message">The input value is not valid for message part "part name", valid values are "part values".</div>
+                                </div>
+                                <div class="grid-row advertising">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60001</div>
+                                    <div class="message">A service error has occurred.</div>
+                                </div>
+                                <div class="grid-row advertising">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60002</div>
+                                    <div class="message">Input value for message part part name is not valid.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60100</div>
+                                    <div class="message"><strong>Audio coding not specified</strong>: Audio coding not specified.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60101</div>
+                                    <div class="message"><strong>Idle Time out</strong>: Idle Time out.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60102</div>
+                                    <div class="message"><strong>HTTP Chunk length bad</strong>: HTTP Chunk length bad.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60103</div>
+                                    <div class="message"><strong>App package not found</strong>: App package not found.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60104</div>
+                                    <div class="message"><strong>Bitrate not supported</strong>: Bit-rate not supported.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60105</div>
+                                    <div class="message"><strong>No Speech</strong>: No Speech.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60106</div>
+                                    <div class="message"><strong>Not Enough Speech</strong>: Not Enough Speech.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60107</div>
+                                    <div class="message"><strong>Too Much Speech</strong>: Too Much Speech.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60108</div>
+                                    <div class="message"><strong>Too Quiet</strong>: Too Quiet.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60109</div>
+                                    <div class="message"><strong>Speech Too Soon</strong>: Speech Too Soon</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60110</div>
+                                    <div class="message"><strong>Parameter is not valid.</strong>: Parameter is not valid.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60111</div>
+                                    <div class="message"><strong>Undefined parameter</strong>: Undefined parameter.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60112</div>
+                                    <div class="message"><strong>only pcm linear 16 supported</strong>: Only pcm linear 16 supported.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60113</div>
+                                    <div class="message"><strong>sampleRate conflict</strong>: Sample Rate conflict.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60114</div>
+                                    <div class="message"><strong>too many channels</strong>: Too many channels.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60200</div>
+                                    <div class="message"><strong>Text coding not specified</strong>: Text coding not specified.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60201</div>
+                                    <div class="message"><strong>Idle Time out</strong>: Idle Time out.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60202</div>
+                                    <div class="message"><strong>App package not found</strong>: App package not found.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60203</div>
+                                    <div class="message"><strong>No Text</strong>: No Text</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60204</div>
+                                    <div class="message"><strong>Too Much Text.</strong>: Too Much Text.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60205</div>
+                                    <div class="message"><strong>Parameter is not valid.</strong>: Parameter is not valid.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60206</div>
+                                    <div class="message"><strong>Undefined parameter</strong>: Undefined parameter.</div>
+                                </div>
+                                <div class="grid-row speech">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC60207</div>
+                                    <div class="message"><strong>Invalid audio format.</strong>: Invalid audio format.</div>
+                                </div>
+                                <div class="grid-row oauth-2">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL70000</div>
+                                    <div class="message"><strong>request_not_valid</strong>: The request is missing a required parameter, includes an unsupported parameter or parameter value, repeats a parameter, includes multiple credentials, utilizes more than one mechanism for authenticating the client, or is otherwise malformed.</div>
+                                </div>
+                                <div class="grid-row oauth-2">
+                                    <div class="status-code">401 Unauthorized</div>
+                                    <div class="error-code">POL70001</div>
+                                    <div class="message"><strong>client_not_valid</strong>: The client identifier provided is not valid, the client failed to authenticate, the client did not include the credentials, provided multiple client credentials, or used unsupported credentials type.</div>
+                                </div>
+                                <div class="grid-row oauth-2">
+                                    <div class="status-code">401 Unauthorized</div>
+                                    <div class="error-code">POL70002</div>
+                                    <div class="message"><strong>unauthorized_client</strong>: The authenticated client is not authorized to use the access grant type provided.</div>
+                                </div>
+                                <div class="grid-row oauth-2">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">POL70003</div>
+                                    <div class="message"><strong>grant_not_valid</strong>: The provided access grant is not valid, expired, or revoked.  (For example, assertion is not valid, expired authorization token, bad end-user password credentials, or mis-matching authorization code and redirection URI).</div>
+                                </div>
+                                <div class="grid-row oauth-2">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">POL70004</div>
+                                    <div class="message"><strong>scope_not_valid</strong>: The requested scope is not valid, unknown, malformed, or exceeds the previously granted scope.</div>
+                                </div>
+                                <div class="grid-row oauth-2">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">POL70005</div>
+                                    <div class="message"><strong>unsupported_grant_type</strong>: The access grant included - the type or another attribute ? is not supported by the authorization server.</div>
+                                </div>
+                                <div class="grid-row oauth-2">
+                                    <div class="status-code">401 Unauthorized</div>
+                                    <div class="error-code">POL70006</div>
+                                    <div class="message"><strong>access_denied</strong>: The user cancelled the transaction.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">SVC80000</div>
+                                    <div class="message"><strong>AOC-0001</strong>: System Unavailable.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">SVC80001</div>
+                                    <div class="message"><strong>AOC-0002</strong>: System Unavailable.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80002</div>
+                                    <div class="message"><strong>AOC-0003</strong>: Request is not valid.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80003</div>
+                                    <div class="message"><strong>AOC-0004</strong>: Transaction Cancelled.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80004</div>
+                                    <div class="message"><strong>AOC-0005</strong>: Authentication Failed.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">SVC80005</div>
+                                    <div class="message"><strong>PMT-0005</strong>: Communication Error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80006</div>
+                                    <div class="message"><strong>PMT-0001</strong>: Mandatory parameter {0} is not supplied.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80007</div>
+                                    <div class="message"><strong>PMT-0002</strong>: Parameter {0} has illegal value {1}.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80008</div>
+                                    <div class="message"><strong>PMT-0003</strong>: Wrong caller credentials.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80009</div>
+                                    <div class="message"><strong>PMT-0004</strong>: Wrong caller credentials.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80010</div>
+                                    <div class="message"><strong>PMT-0006</strong>: Implementation {0} was not found.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80011</div>
+                                    <div class="message"><strong>PMT-0007</strong>: Internal error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80012</div>
+                                    <div class="message"><strong>PMT-0008</strong>: Internal error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80013</div>
+                                    <div class="message"><strong>PMT-0009</strong>: Parameter {0} is too long, max length is {1}, given value {2}.</div>
+                                </div>
+                                <div class="grid-row payment device-capabilities">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80014</div>
+                                    <div class="message"><strong>PMT-0010</strong>: Internal error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">SVC80015</div>
+                                    <div class="message"><strong>PMT-0099</strong>: Fatal error {0}.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80016</div>
+                                    <div class="message"><strong>PMT-0100</strong>: Wrong caller credentials.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80017</div>
+                                    <div class="message"><strong>PMT-0101</strong>: Biller with ID {0} does not exist.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80018</div>
+                                    <div class="message"><strong>PMT-0102</strong>: {0} does not have attribute: {1}.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80019</div>
+                                    <div class="message"><strong>PMT-0103</strong>: Channel {0} was not defined.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80020</div>
+                                    <div class="message"><strong>PMT-0199</strong>: Internal error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80021</div>
+                                    <div class="message"><strong>PMT-0203</strong>: Tenant of merchant is {0}, but tenant of customer is {1} for session {2}.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80022</div>
+                                    <div class="message"><strong>PMT-0204</strong>: Customer not authenticated.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80023</div>
+                                    <div class="message"><strong>PMT-0205</strong>: Consumer already exists.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80024</div>
+                                    <div class="message"><strong>PMT-0206</strong>: Consumer credentials are wrong.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80025</div>
+                                    <div class="message"><strong>PMT-0207</strong>: Customer suspended.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80026</div>
+                                    <div class="message"><strong>PMT-0208</strong>: Customer login blocked.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80027</div>
+                                    <div class="message"><strong>PMT-0209</strong>: Wrong authorization token was provided for session {0}.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80028</div>
+                                    <div class="message"><strong>PMT-0210</strong>: Source of funds is suspended.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80029</div>
+                                    <div class="message"><strong>PMT-0211</strong>: Source of funds is retired.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80030</div>
+                                    <div class="message"><strong>PMT-0212</strong>: SOF registration failed.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80031</div>
+                                    <div class="message"><strong>PMT-0300</strong>: Not Valid {0} URL: {1}.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80032</div>
+                                    <div class="message"><strong>PMT-0301</strong>: Not Valid Session: {0}.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80033</div>
+                                    <div class="message"><strong>PMT-0302</strong>: Merchant ID not active.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80034</div>
+                                    <div class="message"><strong>PMT-0303</strong>: Internal error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80035</div>
+                                    <div class="message"><strong>PMT-0304</strong>: Merchant not exist.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80036</div>
+                                    <div class="message"><strong>PMT-0399</strong>: Internal error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80037</div>
+                                    <div class="message"><strong>PMT-0400</strong>: Not Valid Input {0}.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80038</div>
+                                    <div class="message"><strong>PMT-0401</strong>: Mandatory Field missing {0}</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80039</div>
+                                    <div class="message"><strong>PMT-0402</strong>: Source of funds is not valid.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80040</div>
+                                    <div class="message"><strong>PMT-0403</strong>: Biller suspended source of funds.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80041</div>
+                                    <div class="message"><strong>PMT-0404</strong>: Global Limit failed.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80042</div>
+                                    <div class="message"><strong>PMT-0405</strong>: Merchant Limit failed.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80043</div>
+                                    <div class="message"><strong>PMT-0406</strong>: Customer Limit failed.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80044</div>
+                                    <div class="message"><strong>PMT-0407</strong>: Source of funds Limit failed.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80045</div>
+                                    <div class="message"><strong>PMT-0408</strong>: Biller did not authorize the transaction.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80046</div>
+                                    <div class="message"><strong>PMT-0409</strong>: Biller could not capture the transaction.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80047</div>
+                                    <div class="message"><strong>PMT-0410</strong>: Biller could not rollback the transaction.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80048</div>
+                                    <div class="message"><strong>PMT-0411</strong>: Transaction does not exist.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80049</div>
+                                    <div class="message"><strong>PMT-0412</strong>: Too many transactions for the customer.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80050</div>
+                                    <div class="message"><strong>PMT-0413</strong>: Limit Rollback failed.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80051</div>
+                                    <div class="message"><strong>PMT-0414</strong>: Missing Input Parameter from external System.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80052</div>
+                                    <div class="message"><strong>PMT-0415</strong>: Output Parameter from external System is not valid.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80053</div>
+                                    <div class="message"><strong>PMT-0416</strong>: Limits could not be committed.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80054</div>
+                                    <div class="message"><strong>PMT-0417</strong>: Not enough time passed since last action.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">SVC80055</div>
+                                    <div class="message"><strong>PMT-0418</strong>: Transaction is timed out.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80056</div>
+                                    <div class="message"><strong>PMT-0419</strong>: Transaction state is not valid for requested action.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80057</div>
+                                    <div class="message"><strong>PMT-0420</strong>: Could not generate valid external ID.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">SVC80058</div>
+                                    <div class="message"><strong>PMT-0421</strong>: Do not save transaction error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80059</div>
+                                    <div class="message"><strong>PMT-0422</strong>: Merchant retired.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80060</div>
+                                    <div class="message"><strong>PMT-0423</strong>: Consumer retired.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80061</div>
+                                    <div class="message"><strong>PMT-0424</strong>: Could not create a billable event.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80062</div>
+                                    <div class="message"><strong>PMT-0425</strong>: Refund limits failed.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80063</div>
+                                    <div class="message"><strong>PMT-0427</strong>: The original transaction is not active anymore for actions.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80064</div>
+                                    <div class="message"><strong>PMT-0428</strong>: Biller did not cancel the authorization on the transaction.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">SVC80065</div>
+                                    <div class="message"><strong>PMT-0498</strong>: Internal error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">SVC80066</div>
+                                    <div class="message"><strong>PMT-0499</strong>: Internal error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80067</div>
+                                    <div class="message"><strong>PMT-0500</strong>: Session cannot be created, the reason is : {0}.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80068</div>
+                                    <div class="message"><strong>PMT-0501</strong>: Session {0} does not exist.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80069</div>
+                                    <div class="message"><strong>PMT-0502</strong>: Session {0} is obsolete.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80070</div>
+                                    <div class="message"><strong>PMT-0503</strong>: Session is expired.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80071</div>
+                                    <div class="message"><strong>PMT-0599</strong>: Internal error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80072</div>
+                                    <div class="message"><strong>PMT-0600</strong>: Cannot complete the request, consumer does not exist or retired.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80073</div>
+                                    <div class="message"><strong>PMT-0601</strong>: Cannot complete the request, merchant does not exist or retired.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80074</div>
+                                    <div class="message"><strong>PMT-0602</strong>: Cannot complete the request, consumer is not active.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80075</div>
+                                    <div class="message"><strong>PMT-0603</strong>: Cannot complete the request, merchant is not active.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80076</div>
+                                    <div class="message"><strong>PMT-0604</strong>: {0} request failed, transaction status: {1}.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80077</div>
+                                    <div class="message"><strong>PMT-0605</strong>: Cannot complete the request, the subscription period is too long.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80078</div>
+                                    <div class="message"><strong>PMT-0606</strong>: Subscription with ID: {0} is not found.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80079</div>
+                                    <div class="message"><strong>PMT-0607</strong>: Unsupported operation on external subscription.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80080</div>
+                                    <div class="message"><strong>PMT-0699</strong>: General subscription management error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80081</div>
+                                    <div class="message"><strong>PMT-0701</strong>: Internal error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80082</div>
+                                    <div class="message"><strong>PMT-0702</strong>: Internal error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80083</div>
+                                    <div class="message"><strong>PMT-0703</strong>: Problem with the biller identifiers.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80084</div>
+                                    <div class="message"><strong>PMT-0704</strong>: Internal error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80085</div>
+                                    <div class="message"><strong>PMT-0705</strong>: Internal error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">SVC80086</div>
+                                    <div class="message"><strong>PMT-0706</strong>: Transaction failure.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80087</div>
+                                    <div class="message"><strong>PMT-0707</strong>: Consumer failure.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80088</div>
+                                    <div class="message"><strong>PMT-0708</strong>: Pocket retired.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80089</div>
+                                    <div class="message"><strong>PMT-0709</strong>: Pocket suspended.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80090</div>
+                                    <div class="message"><strong>PMT-0710</strong>: Consumer failure.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80091</div>
+                                    <div class="message"><strong>PMT-0711</strong>: Internal error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">SVC80092</div>
+                                    <div class="message"><strong>PMT-0712</strong>: Internal error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">SVC80093</div>
+                                    <div class="message"><strong>PMT-0713</strong>: Could not connect to external system.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">SVC80094</div>
+                                    <div class="message"><strong>PMT-0714</strong>: External Time out.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">SVC80095</div>
+                                    <div class="message"><strong>PMT-0715</strong>: Signature could not be encrypted.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">SVC80096</div>
+                                    <div class="message"><strong>PMT-0716</strong>: Error received from external system.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">SVC80097</div>
+                                    <div class="message"><strong>PMT-0717</strong>: Input from external system is not valid.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80098</div>
+                                    <div class="message"><strong>PMT-0718</strong>: The biller Account does allow the transaction.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80099</div>
+                                    <div class="message"><strong>PMT-0722</strong>: Biller Limits did not allow the transaction.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80100</div>
+                                    <div class="message"><strong>PMT-0729</strong>: the biller does not allow this product to be sold.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80101</div>
+                                    <div class="message"><strong>PMT-0730</strong>: Duplicate Subscription.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80102</div>
+                                    <div class="message"><strong>PMT-0733</strong>: The Biller Agreement does not allow the transaction.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80103</div>
+                                    <div class="message"><strong>PMT-0738</strong>: Transaction was already refunded.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">SVC80104</div>
+                                    <div class="message"><strong>PMT-0799</strong>: Biller General error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80105</div>
+                                    <div class="message"><strong>PMT-0801</strong>: Wrong caller credentials.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80106</div>
+                                    <div class="message"><strong>PMT-0802</strong>: The merchant cannot run service {0} because of being in state {1}.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80107</div>
+                                    <div class="message"><strong>PMT-0803</strong>: Illegal operation: trying to upload empty file.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80108</div>
+                                    <div class="message"><strong>PMT-0804</strong>: Illegal operation: trying to upload file with size [{0}] bigger then [{1}] size.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80109</div>
+                                    <div class="message"><strong>PMT-0805</strong>: Merchant file with such file type [{0}] is not allowed.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80110</div>
+                                    <div class="message"><strong>PMT-0806</strong>: Merchant file with such identifier [{0}] already exist.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80111</div>
+                                    <div class="message"><strong>PMT-0807</strong>: Merchant file with such identifier [{0}] does not exist.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80112</div>
+                                    <div class="message"><strong>PMT-0808</strong>: Merchant status cannot be changed from {0} to {1}.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80113</div>
+                                    <div class="message"><strong>PMT-0809</strong>: Update merchant status cannot be run for input status {0}.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80114</div>
+                                    <div class="message"><strong>PMT-0810</strong>: The input value {0} of attribute {1} does not match the predefined values.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80115</div>
+                                    <div class="message"><strong>PMT-0811</strong>: The input content category {0} is not allowed to be added by merchant .</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80116</div>
+                                    <div class="message"><strong>PMT-0812</strong>: Merchant with given ID already exist.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80117</div>
+                                    <div class="message"><strong>PMT-0813</strong>: The input content category {0} is not allowed to be added by merchant.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">SVC80118</div>
+                                    <div class="message"><strong>PMT-0899</strong>: Internal error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80119</div>
+                                    <div class="message"><strong>PMT-0901</strong>: Consumer is Retired.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80120</div>
+                                    <div class="message"><strong>PMT-0902</strong>: Not valid consumer status {0}.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80121</div>
+                                    <div class="message"><strong>PMT-0903</strong>: Update of {0} is not allowed.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80122</div>
+                                    <div class="message"><strong>PMT-0904</strong>: Source Of Funds is missing (id={0}).</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80123</div>
+                                    <div class="message"><strong>PMT-0999</strong>: Internal error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80124</div>
+                                    <div class="message"><strong>PMT-1001</strong>: General Error- [{0}].</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80125</div>
+                                    <div class="message"><strong>PMT-1002</strong>: DCM server received event that referred to transaction that was not found in HUB repository. The input vendorPurchaseIdentifier exception is [{0}].</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80126</div>
+                                    <div class="message"><strong>PMT-1003</strong>: No subscription was not found in HUB repository. For hubMerchantID [{0}], externalSubscriptionId [{1}], hubCustomerID [{2}], environment [{3}].</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80127</div>
+                                    <div class="message"><strong>PMT-1004</strong>: The input [{0}] field is not valid. Input date field value is [{1}].</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80128</div>
+                                    <div class="message"><strong>PMT-1005</strong>: The input [{0}] field is missing. Input date field value is [{1}].</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80129</div>
+                                    <div class="message"><strong>PMT-1006</strong>: The method [{0}] fails to process the event. Input fields: hubMerchantID [{1}] , externalSubscriptionId [{2}] , hubCustomerID [{3}] , environment [{4}], activityTimestamp [{5}] , tenantId [{6}].</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80130</div>
+                                    <div class="message"><strong>PMT-1007</strong>: The input [{0}] field is not valid or missing. Input field value is [{1}].</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80131</div>
+                                    <div class="message"><strong>PMT-1008</strong>: The DCM ownership Event is not valid, fails during unmarshal. Input value: [{0}].</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80132</div>
+                                    <div class="message"><strong>PMT-1009</strong>: The original transaction has already refunded, but the refund confirmation number in HUB does not equal to the one in the DCM report. Transaction ID[{0}], HUB refund confirmation Number[{1}], DCM refund confirmation Number(ACTIVITY_ID)[{2}].</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80133</div>
+                                    <div class="message"><strong>PMT-1010</strong>: The original transaction to be refunded was not found in HUB repository. DCM report includes refund activity referring to original transaction that was not found in HUB repository. DCM confirmation Number of the original transaction to be refunded (PARENT_FINANCIAL_EVENT_ID) [{0}].</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80134</div>
+                                    <div class="message"><strong>PMT-1011</strong>: The original transaction that has already refunded refers to refund transaction ID that was not found in HUB repository. Original Transaction ID [{0}], Refund Transaction ID (additionalTransactionID)[{1}].</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80135</div>
+                                    <div class="message"><strong>PMT-1012</strong>: DCM report includes refund activity on refund transaction that has been initiated by HUB and already carried out by HUB, but eventually has not been approved by DCM. Hub Refund Transaction ID [{0}].</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80136</div>
+                                    <div class="message"><strong>PMT-1013</strong>: error on try to do refund that initiated by DCM and received in the FTR report file. Hub Transaction ID to be Refunded [{0}].</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80137</div>
+                                    <div class="message"><strong>PMT-1014</strong>: Cannot map DCM refund reason code to HUB Refund Reason ID. DCM Refund Reason Code[{0}].</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80138</div>
+                                    <div class="message"><strong>PMT-1015</strong>: Cannot map HUB Refund Reason ID to DCM refund reason code. HUB Refund Reason ID[{0}].</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80139</div>
+                                    <div class="message"><strong>PMT-1016</strong>: Cannot map input parameters to DCM offer ID. Input parameters: price [{0}], currency [{1}], repeatitionTimeUnit [{2}], repeatitionPeriod [{3}], repeatitionsAmount [{4}], contentCategoryId [{5}], billerId [{6}] to DCM Offer ID.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80140</div>
+                                    <div class="message"><strong>PMT-1100</strong>: Consumer with ID {0} does not exist.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80141</div>
+                                    <div class="message"><strong>PMT-1101</strong>: Consumer already activated.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80142</div>
+                                    <div class="message"><strong>PMT-1199</strong>: Internal error.</div>
+                                </div>
+                                <div class="grid-row payment">
+                                    <div class="status-code">200 OK</div>
+                                    <div class="error-code">POL80143</div>
+                                    <div class="message"><strong>PMT-1199</strong>: Biller limits problem.</div>
+                                </div>
+                                <div class="grid-row mms sms call-management in-app-messaging advertising">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC90001</div>
+                                    <div class="message">A service error has occurred. Error code is %1.</div>
+                                </div>
+                                <div class="grid-row mms sms call-management in-app-messaging device-capabilities advertising">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC90002</div>
+                                    <div class="message">The response error code is SVC0002 and the response has the name of the input parameter that resulted in the error.</div>
+                                </div>
+                                <div class="grid-row mms sms call-management in-app-messaging device-capabilities advertising">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC90003</div>
+                                    <div class="message">The response error code is SVC0003 and the response has the name of the input parameter that resulted in the error and also the value of the input parameter.</div>
+                                </div>
+                                <div class="grid-row mms sms in-app-messaging device-capabilities">
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC90004</div>
+                                    <div class="message">The response error code is SVC0004 and the response has the name of the input parameter that resulted in the error.</div>
                                 </div>
                                 <div class="grid-row">
-                                    <div class="item">SVC40000</div>
-                                    <div class="links">User's device cannot be identified.</div>
+                                    <div class="status-code">409 Conflict</div>
+                                    <div class="error-code">SVC90005</div>
+                                    <div class="message">Correlator %1 specified in message part %2 is a duplicate.</div>
                                 </div>
                                 <div class="grid-row">
-                                    <div class="item">SVC40001</div>
-                                    <div class="links">The device cannot be recognized, "Vendor" - message part.</div>
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC90006</div>
+                                    <div class="message">Group %1 in message part %2 is not a valid group.</div>
                                 </div>
                                 <div class="grid-row">
-                                    <div class="item">SVC40002</div>
-                                    <div class="links">The device cannot be recognized, "Model" - message part.</div>
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC90007</div>
+                                    <div class="message">The charging information is not valid.</div>
                                 </div>
                                 <div class="grid-row">
-                                    <div class="item">SVC40003</div>
-                                    <div class="links">The device cannot be recognized, "Vendor &amp; Model" - message part.</div>
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC90008</div>
+                                    <div class="message">Overlapped Criteria %1.</div>
                                 </div>
                                 <div class="grid-row">
-                                    <div class="item">SVC40004</div>
-                                    <div class="links">The device cannot be found, "TypeAllocationCode" - message part.</div>
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC91000</div>
+                                    <div class="message">No resources.</div>
                                 </div>
                                 <div class="grid-row">
-                                    <div class="item">SVC40005</div>
-                                    <div class="links">The input value is not valid for message part "part name".</div>
+                                    <div class="status-code">400 Bad Request</div>
+                                    <div class="error-code">SVC92000</div>
+                                    <div class="message">The following service error occurred: %1. Error code is %2.</div>
                                 </div>
-                                <div class="grid-row">
-                                    <div class="item">SVC40006</div>
-                                    <div class="links">The input value is not valid for message part "part name", valid values are "part values".</div>
-                                </div>
-                                <div class="grid-row">
-                                    <div class="item">SVC40007</div>
-                                    <div class="links">No valid addresses provided in the message part "part name".</div>
-                                </div>
-                                <div class="grid-row">
-                                    <div class="item">POL40011</div>
-                                    <div class="links">Authorization cannot be granted at this time.</div>
-                                </div>
-                                <div class="grid-row">
-                                    <div class="item">SVC60000</div>
-                                    <div class="links">The input value is not valid for message part "part name", valid values are "part values".</div>
-                                </div>
-                                <div class="grid-row">
-                                    <div class="item">SVC60001</div>
-                                    <div class="links">A service error has occurred.</div>
-                                </div>
-                                <div class="grid-row">
-                                    <div class="item">SVC60002</div>
-                                    <div class="links">Input value for message part part name is not valid.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60100</div>
-                                    <div class="links">Audio coding not specified.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60101</div>
-                                    <div class="links">Idle Time out.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60102</div>
-                                    <div class="links">HTTP Chunk length bad.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60103</div>
-                                    <div class="links">App package not found.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60104</div>
-                                    <div class="links">Bit-rate not supported.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60105</div>
-                                    <div class="links">No Speech.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60106</div>
-                                    <div class="links">Not Enough Speech.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60107</div>
-                                    <div class="links">Too Much Speech.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60108</div>
-                                    <div class="links">Too Quiet.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60109</div>
-                                    <div class="links">Speech Too Soon</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60110</div>
-                                    <div class="links">Parameter is not valid.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60111</div>
-                                    <div class="links">Undefined parameter.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60112</div>
-                                    <div class="links">Only pcm linear 16 supported.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60113</div>
-                                    <div class="links">Sample Rate conflict.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60114</div>
-                                    <div class="links">Too many channels.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60200</div>
-                                    <div class="links">Text coding not specified.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60201</div>
-                                    <div class="links">Idle Time out.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60202</div>
-                                    <div class="links">App package not found.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60203</div>
-                                    <div class="links">No Text</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60204</div>
-                                    <div class="links">Too Much Text.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60205</div>
-                                    <div class="links">Parameter is not valid.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60206</div>
-                                    <div class="links">Undefined parameter.</div>
-                                </div>
-                                <div class="grid-row speech">
-                                    <div class="item">SVC60207</div>
-                                    <div class="links">Invalid audio format.</div>
-                                </div>
-                                <div class="grid-row oauth">
-                                    <div class="item">POL70000</div>
-                                    <div class="links">The request is missing a required parameter, includes an unsupported parameter or parameter value, repeats a parameter, includes multiple credentials, utilizes more than one mechanism for authenticating the client, or is otherwise malformed.</div>
-                                </div>
-                                <div class="grid-row oauth">
-                                    <div class="item">POL70001</div>
-                                    <div class="links">The client identifier provided is not valid, the client failed to authenticate, the client did not include the credentials, provided multiple client credentials, or used unsupported credentials type.</div>
-                                </div>
-                                <div class="grid-row oauth">
-                                    <div class="item">POL70002</div>
-                                    <div class="links">The authenticated client is not authorized to use the access grant type provided.</div>
-                                </div>
-                                <div class="grid-row oauth">
-                                    <div class="item">POL70003</div>
-                                    <div class="links">The provided access grant is not valid, expired, or revoked.  (For example, assertion is not valid, expired authorization token, bad end-user password credentials, or mis-matching authorization code and redirection URI).</div>
-                                </div>
-                                <div class="grid-row oauth">
-                                    <div class="item">POL70004</div>
-                                    <div class="links">The requested scope is not valid, unknown, malformed, or exceeds the previously granted scope.</div>
-                                </div>
-                                <div class="grid-row oauth">
-                                    <div class="item">POL70005</div>
-                                    <div class="links">The access grant included - the type or another attribute ? is not supported by the authorization server.</div>
-                                </div>
-                                <div class="grid-row oauth">
-                                    <div class="item">POL70006</div>
-                                    <div class="links">The user cancelled the transaction.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">SVC80000</div>
-                                    <div class="links">System Unavailable.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">SVC80001</div>
-                                    <div class="links">System Unavailable.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80002</div>
-                                    <div class="links">Request is not valid.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80003</div>
-                                    <div class="links">Transaction Cancelled.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80004</div>
-                                    <div class="links">Authentication Failed.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">SVC80005</div>
-                                    <div class="links">Communication Error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80006</div>
-                                    <div class="links">Mandatory parameter {0} is not supplied.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80007</div>
-                                    <div class="links">Parameter {0} has illegal value {1}.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80008</div>
-                                    <div class="links">Wrong caller credentials.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80009</div>
-                                    <div class="links">Wrong caller credentials.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80010</div>
-                                    <div class="links">Implementation {0} was not found.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80011</div>
-                                    <div class="links">Internal error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80012</div>
-                                    <div class="links">Internal error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80013</div>
-                                    <div class="links">Parameter {0} is too long, max length is {1}, given value {2}.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80014</div>
-                                    <div class="links">Internal error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">SVC80015</div>
-                                    <div class="links">Fatal error {0}.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80016</div>
-                                    <div class="links">Wrong caller credentials.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80017</div>
-                                    <div class="links">Biller with ID {0} does not exist.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80018</div>
-                                    <div class="links">{0} does not have attribute: {1}.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80019</div>
-                                    <div class="links">Channel {0} was not defined.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80020</div>
-                                    <div class="links">Internal error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80021</div>
-                                    <div class="links">Tenant of merchant is {0}, but tenant of customer is {1} for session {2}.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80022</div>
-                                    <div class="links">Customer not authenticated.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80023</div>
-                                    <div class="links">Consumer already exists.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80024</div>
-                                    <div class="links">Consumer credentials are wrong.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80025</div>
-                                    <div class="links">Customer suspended.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80026</div>
-                                    <div class="links">Customer login blocked.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80027</div>
-                                    <div class="links">Wrong authorization token was provided for session {0}.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80028</div>
-                                    <div class="links">Source of funds is suspended.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80029</div>
-                                    <div class="links">Source of funds is retired.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80030</div>
-                                    <div class="links">SOF registration failed.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80031</div>
-                                    <div class="links">Not Valid {0} URL: {1}.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80032</div>
-                                    <div class="links">Not Valid Session: {0}.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80033</div>
-                                    <div class="links">Merchant ID not active.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80034</div>
-                                    <div class="links">Internal error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80035</div>
-                                    <div class="links">Merchant not exist.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80036</div>
-                                    <div class="links">Internal error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80037</div>
-                                    <div class="links">Not Valid Input {0}.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80038</div>
-                                    <div class="links">Mandatory Field missing {0}</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80039</div>
-                                    <div class="links">Source of funds is not valid.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80040</div>
-                                    <div class="links">Biller suspended source of funds.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80041</div>
-                                    <div class="links">Global Limit failed.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80042</div>
-                                    <div class="links">Merchant Limit failed.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80043</div>
-                                    <div class="links">Customer Limit failed.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80044</div>
-                                    <div class="links">Source of funds Limit failed.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80045</div>
-                                    <div class="links">Biller did not authorize the transaction.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80046</div>
-                                    <div class="links">Biller could not capture the transaction.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80047</div>
-                                    <div class="links">Biller could not rollback the transaction.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80048</div>
-                                    <div class="links">Transaction does not exist.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80049</div>
-                                    <div class="links">Too many transactions for the customer.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80050</div>
-                                    <div class="links">Limit Rollback failed.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80051</div>
-                                    <div class="links">Missing Input Parameter from external System.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80052</div>
-                                    <div class="links">Output Parameter from external System is not valid.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80053</div>
-                                    <div class="links">Limits could not be committed.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80054</div>
-                                    <div class="links">Not enough time passed since last action.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">SVC80055</div>
-                                    <div class="links">Transaction is timed out.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80056</div>
-                                    <div class="links">Transaction state is not valid for requested action.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80057</div>
-                                    <div class="links">Could not generate valid external ID.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">SVC80058</div>
-                                    <div class="links">Do not save transaction error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80059</div>
-                                    <div class="links">Merchant retired.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80060</div>
-                                    <div class="links">Consumer retired.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80061</div>
-                                    <div class="links">Could not create a billable event.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80062</div>
-                                    <div class="links">Refund limits failed.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80063</div>
-                                    <div class="links">The original transaction is not active anymore for actions.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80064</div>
-                                    <div class="links">Biller did not cancel the authorization on the transaction.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">SVC80065</div>
-                                    <div class="links">Internal error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">SVC80066</div>
-                                    <div class="links">Internal error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80067</div>
-                                    <div class="links">Session cannot be created, the reason is : {0}.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80068</div>
-                                    <div class="links">Session {0} does not exist.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80069</div>
-                                    <div class="links">Session {0} is obsolete.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80070</div>
-                                    <div class="links">Session is expired.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80071</div>
-                                    <div class="links">Internal error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80072</div>
-                                    <div class="links">Cannot complete the request, consumer does not exist or retired.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80073</div>
-                                    <div class="links">Cannot complete the request, merchant does not exist or retired.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80074</div>
-                                    <div class="links">Cannot complete the request, consumer is not active.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80075</div>
-                                    <div class="links">Cannot complete the request, merchant is not active.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80076</div>
-                                    <div class="links">{0} request failed, transaction status: {1}.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80077</div>
-                                    <div class="links">Cannot complete the request, the subscription period is too long.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80078</div>
-                                    <div class="links">Subscription with ID: {0} is not found.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80079</div>
-                                    <div class="links">Unsupported operation on external subscription.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80080</div>
-                                    <div class="links">General subscription management error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80081</div>
-                                    <div class="links">Internal error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80082</div>
-                                    <div class="links">Internal error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80083</div>
-                                    <div class="links">Problem with the biller identifiers.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80084</div>
-                                    <div class="links">Internal error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80085</div>
-                                    <div class="links">Internal error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">SVC80086</div>
-                                    <div class="links">Transaction failure.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80087</div>
-                                    <div class="links">Consumer failure.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80088</div>
-                                    <div class="links">Pocket retired.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80089</div>
-                                    <div class="links">Pocket suspended.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80090</div>
-                                    <div class="links">Consumer failure.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80091</div>
-                                    <div class="links">Internal error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">SVC80092</div>
-                                    <div class="links">Internal error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">SVC80093</div>
-                                    <div class="links">Could not connect to external system.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">SVC80094</div>
-                                    <div class="links">External Time out.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">SVC80095</div>
-                                    <div class="links">Signature could not be encrypted.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">SVC80096</div>
-                                    <div class="links">Error received from external system.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">SVC80097</div>
-                                    <div class="links">Input from external system is not valid.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80098</div>
-                                    <div class="links">The biller Account does allow the transaction.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80099</div>
-                                    <div class="links">Biller Limits did not allow the transaction.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80100</div>
-                                    <div class="links">the biller does not allow this product to be sold.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80101</div>
-                                    <div class="links">Duplicate Subscription.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80102</div>
-                                    <div class="links">The Biller Agreement does not allow the transaction.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80103</div>
-                                    <div class="links">Transaction was already refunded.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">SVC80104</div>
-                                    <div class="links">Biller General error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80105</div>
-                                    <div class="links">Wrong caller credentials.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80106</div>
-                                    <div class="links">The merchant cannot run service {0} because of being in state {1}.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80107</div>
-                                    <div class="links">Illegal operation: trying to upload empty file.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80108</div>
-                                    <div class="links">Illegal operation: trying to upload file with size [{0}] bigger then [{1}] size.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80109</div>
-                                    <div class="links">Merchant file with such file type [{0}] is not allowed.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80110</div>
-                                    <div class="links">Merchant file with such identifier [{0}] already exist.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80111</div>
-                                    <div class="links">Merchant file with such identifier [{0}] does not exist.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80112</div>
-                                    <div class="links">Merchant status cannot be changed from {0} to {1}.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80113</div>
-                                    <div class="links">Update merchant status cannot be run for input status {0}.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80114</div>
-                                    <div class="links">The input value {0} of attribute {1} does not match the predefined values.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80115</div>
-                                    <div class="links">The input content category {0} is not allowed to be added by merchant .</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80116</div>
-                                    <div class="links">Merchant with given ID already exist.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80117</div>
-                                    <div class="links">The input content category {0} is not allowed to be added by merchant.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">SVC80118</div>
-                                    <div class="links">Internal error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80119</div>
-                                    <div class="links">Consumer is Retired.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80120</div>
-                                    <div class="links">Not valid consumer status {0}.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80121</div>
-                                    <div class="links">Update of {0} is not allowed.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80122</div>
-                                    <div class="links">Source Of Funds is missing (id={0}).</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80123</div>
-                                    <div class="links">Internal error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80124</div>
-                                    <div class="links">General Error- [{0}].</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80125</div>
-                                    <div class="links">DCM server received event that referred to transaction that was not found in HUB repository. The input vendorPurchaseIdentifier exception is [{0}].</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80126</div>
-                                    <div class="links">No subscription was not found in HUB repository. For hubMerchantID [{0}], externalSubscriptionId [{1}], hubCustomerID [{2}], environment [{3}].</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80127</div>
-                                    <div class="links">The input [{0}] field is not valid. Input date field value is [{1}].</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80128</div>
-                                    <div class="links">The input [{0}] field is missing. Input date field value is [{1}].</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80129</div>
-                                    <div class="links">The method [{0}] fails to process the event. Input fields: hubMerchantID [{1}] , externalSubscriptionId [{2}] , hubCustomerID [{3}] , environment [{4}], activityTimestamp [{5}] , tenantId [{6}].</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80130</div>
-                                    <div class="links">The input [{0}] field is not valid or missing. Input field value is [{1}].</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80131</div>
-                                    <div class="links">The DCM ownership Event is not valid, fails during unmarshal. Input value: [{0}].</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80132</div>
-                                    <div class="links">The original transaction has already refunded, but the refund confirmation number in HUB does not equal to the one in the DCM report. Transaction ID[{0}], HUB refund confirmation Number[{1}], DCM refund confirmation Number(ACTIVITY_ID)[{2}].</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80133</div>
-                                    <div class="links">The original transaction to be refunded was not found in HUB repository. DCM report includes refund activity referring to original transaction that was not found in HUB repository. DCM confirmation Number of the original transaction to be refunded (PARENT_FINANCIAL_EVENT_ID) [{0}].</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80134</div>
-                                    <div class="links">The original transaction that has already refunded refers to refund transaction ID that was not found in HUB repository. Original Transaction ID [{0}], Refund Transaction ID (additionalTransactionID)[{1}].</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80135</div>
-                                    <div class="links">DCM report includes refund activity on refund transaction that has been initiated by HUB and already carried out by HUB, but eventually has not been approved by DCM. Hub Refund Transaction ID [{0}].</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80136</div>
-                                    <div class="links">error on try to do refund that initiated by DCM and received in the FTR report file. Hub Transaction ID to be Refunded [{0}].</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80137</div>
-                                    <div class="links">Cannot map DCM refund reason code to HUB Refund Reason ID. DCM Refund Reason Code[{0}].</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80138</div>
-                                    <div class="links">Cannot map HUB Refund Reason ID to DCM refund reason code. HUB Refund Reason ID[{0}].</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80139</div>
-                                    <div class="links">Cannot map input parameters to DCM offer ID. Input parameters: price [{0}], currency [{1}], repeatitionTimeUnit [{2}], repeatitionPeriod [{3}], repeatitionsAmount [{4}], contentCategoryId [{5}], billerId [{6}] to DCM Offer ID.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80140</div>
-                                    <div class="links">Consumer with ID {0} does not exist.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80141</div>
-                                    <div class="links">Consumer already activated.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80142</div>
-                                    <div class="links">Internal error.</div>
-                                </div>
-                                <div class="grid-row payment">
-                                    <div class="item">POL80143</div>
-                                    <div class="links">Biller limits problem.</div>
-                                </div>
-                                <div class="grid-row mms sms cms immn">
-                                    <div class="item">SVC90001</div>
-                                    <div class="links">A service error has occurred. Error code is %1.</div>
-                                </div>
-                                <div class="grid-row mms sms cms immn">
-                                    <div class="item">SVC90002</div>
-                                    <div class="links">The response error code is SVC0002 and the response has the name of the input parameter that resulted in the error.</div>
-                                </div>
-                                <div class="grid-row mms sms cms immn">
-                                    <div class="item">SVC90003</div>
-                                    <div class="links">The response error code is SVC0003 and the response has the name of the input parameter that resulted in the error and also the value of the input parameter.</div>
-                                </div>
-                                <div class="grid-row mms sms immn">
-                                    <div class="item">SVC90004</div>
-                                    <div class="links">The response error code is SVC0004 and the response has the name of the input parameter that resulted in the error.</div>
-                                </div>
-                                <div class="grid-row">
-                                    <div class="item">SVC90005</div>
-                                    <div class="links">Correlator %1 specified in message part %2 is a duplicate.</div>
-                                </div>
-                                <div class="grid-row">
-                                    <div class="item">SVC90006</div>
-                                    <div class="links">Group %1 in message part %2 is not a valid group.</div>
-                                </div>
-                                <div class="grid-row">
-                                    <div class="item">SVC90007</div>
-                                    <div class="links">The charging information is not valid.</div>
-                                </div>
-                                <div class="grid-row">
-                                    <div class="item">SVC90008</div>
-                                    <div class="links">Overlapped Criteria %1.</div>
-                                </div>
-                                <div class="grid-row">
-                                    <div class="item">SVC91000</div>
-                                    <div class="links">No resources.</div>
-                                </div>
-                                <div class="grid-row">
-                                    <div class="item">SVC92000</div>
-                                    <div class="links">The following service error occurred: %1. Error code is %2.</div>
-                                </div>
-
-
                             </div>
                         </div>
                     </section>
                 </div>
-                
-                
-                
+
+                <!--                <div id="errors" class="landing-page page">
+                                    <section id="error-code" class="level-1">
+                                        <div class="container short error-list">
+                                            <div class="errors-grid">
+                                                <div class="grid-row header">
+                                                    <div class="status-code">Status Code</div>
+                                                    <div class="error-code">Error Code</div>
+                                                    <div class="message">Error Message</div>
+                                                </div>
+                                                <div class="grid-row">
+                                                    <div class="status-code">200 OK</div>
+                                                    <div class="error-code">SVC00000</div>
+                                                    <div class="message"><strong>AOC-0000</strong>: System Unavailable.sfdsdfsdfsdfsdfsdfsdfsdfsdfsdfsdff</div>
+                                                </div>
+                                                <div class="grid-row">
+                                                    <div class="status-code">200 OK</div>
+                                                    <div class="error-code">SVC00000</div>
+                                                    <div class="message"><strong>AOC-0000</strong>: System Unavailable.</div>
+                                                </div>
+                                                <div class="grid-row">
+                                                    <div class="status-code">200 OK</div>
+                                                    <div class="error-code">SVC00000</div>
+                                                    <div class="message"><strong>AOC-0000</strong>: System Unavailable.</div>
+                                                </div>
+                                                <div class="grid-row">
+                                                    <div class="status-code">200 OK</div>
+                                                    <div class="error-code">SVC00000</div>
+                                                    <div class="message"><strong>AOC-0000</strong>: System Unavailable.</div>
+                                                </div>
+                                                <div class="grid-row">
+                                                    <div class="status-code">200 OK</div>
+                                                    <div class="error-code">SVC00000</div>
+                                                    <div class="message"><strong>AOC-0000</strong>: System Unavailable.</div>
+                                                </div>
+                                                <div class="grid-row">
+                                                    <div class="status-code">200 OK</div>
+                                                    <div class="error-code">SVC00000</div>
+                                                    <div class="message"><strong>AOC-0000</strong>: System Unavailable.</div>
+                                                </div>
+                                                <div class="grid-row">
+                                                    <div class="status-code">200 OK</div>
+                                                    <div class="error-code">SVC00000</div>
+                                                    <div class="message"><strong>AOC-0000</strong>: System Unavailable.</div>
+                                                </div>
+                                                <div class="grid-row">
+                                                    <div class="status-code">200 OK</div>
+                                                    <div class="error-code">SVC00000</div>
+                                                    <div class="message"><strong>AOC-0000</strong>: System Unavailable.</div>
+                                                </div>
+                                        </div>
+                                    </section>
+                                </div>-->
+
+
+
 
                 <div id="att-footer" class="container">
                     <div class="footer-top">
@@ -1256,29 +1519,29 @@
 
             <!-- More JS
             ================================================== -->
-            <script src="static-assets/js/selfish.js"></script>
-            <script src="static-assets/js/app.js" type="text/javascript"></script>
-            <script src="static-assets/js/responsive.js" type="text/javascript"></script>
-            <script src="static-assets/js/slideshows.js" type="text/javascript"></script>
-            <script src="static-assets/js/carousel.js" type="text/javascript"></script>
-            <script src="static-assets/js/search.js" type="text/javascript"></script>
-            <script src="static-assets/js/fancy-select.js" type="text/javascript"></script>
-            <script src="static-assets/js/retina.js" type="text/javascript"></script>
+            <!--<script src="static-assets/js/selfish.js"></script>-->
+            <!--<script src="static-assets/js/app.js" type="text/javascript"></script>-->
+            <!--<script src="static-assets/js/responsive.js" type="text/javascript"></script>-->
+            <!--            <script src="static-assets/js/slideshows.js" type="text/javascript"></script>
+                        <script src="static-assets/js/carousel.js" type="text/javascript"></script>
+                        <script src="static-assets/js/search.js" type="text/javascript"></script>-->
+            <!--<script src="static-assets/js/fancy-select.js" type="text/javascript"></script>-->
+<!--            <script src="static-assets/js/retina.js" type="text/javascript"></script>-->
 
             <!-- Hi res images CSS - We load hi res sprites last, so it doesn't block everything else.
             ================================================== -->
-            <link rel="stylesheet" href="/css/hi-res.css" />
+            <!--<link rel="stylesheet" href="/css/hi-res.css" />-->
 
             <!-- Implement CrazyEgg
             ================================================== -->
             <script type="text/javascript">
                 setTimeout(function() {
-                var a = document.createElement("script");
-                var b = document.getElementsByTagName("script")[0];
-                a.src = document.location.protocol + "//dnn506yrbagrg.cloudfront.net/pages/scripts/0017/4039.js?" + Math.floor(new Date().getTime() / 3600000);
-                a.async = true;
-                a.type = "text/javascript";
-                b.parentNode.insertBefore(a, b)
+                    var a = document.createElement("script");
+                    var b = document.getElementsByTagName("script")[0];
+                    a.src = document.location.protocol + "//dnn506yrbagrg.cloudfront.net/pages/scripts/0017/4039.js?" + Math.floor(new Date().getTime() / 3600000);
+                    a.async = true;
+                    a.type = "text/javascript";
+                    b.parentNode.insertBefore(a, b)
                 }, 1);
             </script>
 
@@ -1286,15 +1549,15 @@
             ================================================== -->
             <script>
                 (function(i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-                a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-                a.async = 1;
-                a.src = g;
-                m.parentNode.insertBefore(a, m)
+                    i['GoogleAnalyticsObject'] = r;
+                    i[r] = i[r] || function() {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+                    a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                    a.async = 1;
+                    a.src = g;
+                    m.parentNode.insertBefore(a, m)
                 })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
                 ga('create', 'UA-41325383-1', 'citrusbyte.com');
                 ga('send', 'pageview');

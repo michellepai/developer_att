@@ -56,7 +56,7 @@ html .container, body .container {
 
 
 .code {
-    margin: 20px 0;
+    margin: 0;
 }
 .code .code-caption {
     color: #666666;
@@ -72,7 +72,7 @@ html .container, body .container {
     color: #333333;
     font-family: "Courier New",Courier,monospace;
     font-size: 1.08em;
-    padding: 15px 20px;
+    padding: 0;
     page-break-inside: avoid;
     text-align: left;
     
