@@ -32,17 +32,23 @@ $(function() {
         $(this).parents().find('ul:first a.selected').removeClass('selected');
         $(this).addClass('selected');
     });
-    small_screen();
+    apidoc_responsive();
 
     $(window).resize(function() {
-        small_screen();
+        apidoc_responsive();
     });
 
-    function small_screen() {
+    $('.inner span.toggleMenu').click(function() {
+        $('#toc').toggle();
+    });
+    
+    function apidoc_responsive() {
         if ($(window).width() < 1200) {
-            if ($('.sub-header').length !== 0)
+            if ($('.sub-header').length !== 0) {
                 $('.sub-header').width($(window).width());
-            if ($(window).width() > 600) {
+            }
+            if ($(window).width() >= 600) {
+                $('#toc').show();
                 if ($('.main').length !== 0)
                     $('.main').eq(1).width($(window).width() - 300);
                 if ($('.status').length !== 0)
@@ -50,13 +56,19 @@ $(function() {
                 $(window).scroll(function() {
                     $(window).scrollLeft(0);
                 });
-            } else {
+
+
+            } else if ($(window).width() < 600) {
+                $('#toc').hide();
                 if ($('.main').length !== 0)
                     $('.main').eq(1).width($(window).width() - 20);
                 if ($('.status').length !== 0)
                     $('.status').width($(window).width() - 20);
+                
             }
-        }else{
+            $('#footer-common').width($(window).width());
+            $('#att-footer.container').width($(window).width());
+        } else {
             if ($('.sub-header').length !== 0)
                 $('.sub-header').width(1200);
         }

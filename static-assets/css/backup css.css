@@ -59,6 +59,11 @@ span{
     background: none repeat scroll 0 0 #dadada;
     border-radius: 18px 18px 18px 18px;
 }
+
+.api-docs #document-area #api-docs-content aside #toc ul.level-2 li.highlighted > a {
+    background: none repeat scroll 0 0 #eeeeee;
+    border-radius: 18px 18px 18px 18px;
+}
 .api-docs #document-area #api-docs-content aside #toc .level-1 li {
     color: #333333;
     line-height: 2.5em;

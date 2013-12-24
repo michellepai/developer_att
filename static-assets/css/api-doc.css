@@ -50,14 +50,13 @@ span{
     padding: 25px 0 35px 0px;
     width: 186px;
     overflow: auto;
-    z-index: 0;
+    z-index: 99999;
 }
 
 #footer-common{
     z-index: 100000;
-    /* background: red; */
-    //overflow: hidden;
     display: block;
+    width:1200px;
 }
 .api-docs #document-area #api-docs-content aside #toc li.highlighted > a {
     background: none repeat scroll 0 0 #dadada;
@@ -1420,6 +1419,17 @@ td {
 
 }
 
+#footer-common #att-footer.containe{
+    display:block;
+}
+
+.api-docs #api-docs-header .inner span.toggleMenu{
+        display: none;
+        position: absolute;
+        margin-top:50px;
+        cursor: pointer;
+    }
+
 @media screen and (max-width: 1199px) {
     .api-docs #api-docs-header .main .status{
         margin: 0;
@@ -1435,12 +1445,15 @@ td {
     }
     .api-docs #api-docs-header .main .status a.button{
         width:80px;
-        //float: left;
+        float: none;
         padding:3px!important;
+    }
+    .sub-header .container{
+        padding-left: 30px!important;
     }
     .sub-header .container h1 {
         display: inline;
-        padding:auto 3px;
+        padding:auto 8px;
         padding-right: 30px;
         float:left;
     }
@@ -1451,11 +1464,35 @@ td {
     }
 }
 
+@media screen and (max-width: 768px) {
+    #footer-common{
+        margin-left:0!important;
+    }
+}
+
 
 @media screen and (max-width: 600px) {
+
     #toc{
         display:none;
+        position:fixed;
+        background-color: white;
+        background: none repeat scroll 0 0 #FFFFFF;
+        border: 1px solid #D1D1D1;
+        border-radius: 3px 3px 3px 3px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+        left: 10px;
+        width: 190px;
+        margin-top:75px;
+        z-index: 2147483647;
+        
     }
+    
+    .api-docs #api-docs-header .inner span.toggleMenu{
+        display: block;
+        
+    }
+
     .api-docs #api-docs-header {
         width:600px;
         padding: 15px 0 0 5px;
@@ -1492,8 +1529,5 @@ td {
 @media screen and (max-width: 480px) {
     .api-docs #api-docs-header {
         width:480px;
-    }
-    .api-docs #document-area #api-docs-content .inner > .main {
-        //width:40%
     }
 }
